@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI SISTEMA DE VENTAS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css"> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> 
+    
+</head>
+<body>
+
+    <section id="login-section" class="center-container">
+        <div class="card login-card">
+            <h2>INICIO DE SESIÓN</h2>
+            <p class="text-light">Sistema de Punto de Venta Local</p>
+            <form id="login-form" class="mt-3">
+                <label for="login-username">Usuario</label>
+                <input type="text" id="login-username" value="admin" required>
+                
+                <label for="login-password">Contraseña</label>
+                <input type="password" id="login-password" value="123" required>
+                
+                <button type="submit" class="btn-primary w-100 mt-3">Iniciar Sesión</button>
+            </form>
+        </div>
+    </section>
+    
+    <div id="app-container" class="hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span id="sidebar-business-name" class="business-name">POS App</span>
+                <p id="user-role-display" class="user-role-text"></p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" data-section="pos-section" class="active">
+                    <span class="material-icons-outlined">point_of_sale</span> Punto de Venta
+                </a>
+                <a href="#" data-section="invoices-section">
+                    <span class="material-icons-outlined">receipt_long</span> Facturas
+                </a>
+                <a href="#" data-section="inventory-section">
+                    <span class="material-icons-outlined">inventory_2</span> Inventario
+                </a>
+                <a href="#" data-section="cash-section">
+                    <span class="material-icons-outlined">account_balance_wallet</span> Control de Caja
+                </a>
+                <a href="#" data-section="reports-section">
+                    <span class="material-icons-outlined">bar_chart</span> Reportes
+                </a>
+                <a href="#" data-section="admin-section">
+                    <span class="material-icons-outlined">admin_panel_settings</span> Administración
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="datetime-display">
+                    <span id="current-date"></span>
+                    <span id="current-time"></span>
+                </div>
+                <button id="logout-btn" class="btn-danger-outline w-100">
+                    <span class="material-icons-outlined">logout</span> Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="app-header">
+                <h1 id="welcome-message">Bienvenido, Usuario</h1>
+            </header>
+            
+            <section id="pos-section" class="content-section">
+                <div class="grid-2-1">
+                    <div class="card pos-products-panel">
+                        <h2>Productos</h2>
+                        <input type="text" id="sales-search-product" placeholder="Buscar producto por nombre o código de barras">
+                        <div id="sales-product-list" class="product-grid mt-3"></div>
+                    </div>
+                    
+                    <div class="card pos-cart-panel">
+                        <h2>Carrito de Venta</h2>
+                        <div id="cart-items-list" class="cart-items-container"></div>
+
+                        <div class="cart-summary mt-3">
+                            <div class="total-row">
+                                <span>TOTAL:</span>
+                                <span id="cart-total-amount" class="total-amount">C$ 0.00</span>
+                            </div>
+                            
+                            <label for="payment-method">Método de Pago:</label>
+                            <select id="payment-method">
+                                <option value="Efectivo">Efectivo</option>
+                                <option value="Crédito">Al Crédito (Fiado)</option>
+                                <option value="Tarjeta">Tarjeta</option>
+                                <option value="Transferencia">Transferencia</option>
+                            </select>
+                            
+                            <button id="finalize-sale-btn" class="btn-success w-100 mt-3" disabled>
+                                <span class="material-icons-outlined">shopping_cart_checkout</span> Finalizar Venta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="inventory-section" class="content-section hidden">
+                <div class="grid-3-1">
+                    <div class="card span-3">
+                        <h2>Gestión de Inventario</h2>
+                        <div class="filter-controls">
+                            <input type="text" id="inventory-search-input" placeholder="Buscar por nombre o código">
+                            <select id="inventory-filter-category" class="filter-select"></select>
+                            <button id="add-category-btn" class="btn-secondary-outline">
+                                <span class="material-icons-outlined">category</span> Categorías
+                            </button>
+                            <button id="inventory-filter-lowstock" class="btn-warning-outline">
+                                <span class="material-icons-outlined">warning_amber</span> Stock Bajo
+                            </button>
+                            <button id="export-inventory-btn" class="btn-primary-outline">
+                                <span class="material-icons-outlined">download</span> Exportar
+                            </button>
+                        </div>
+                        <div class="table-container mt-3">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Cód. Barras</th>
+                                        <th>Categoría</th>
+                                        <th>Stock</th>
+                                        <th>Precio Venta</th>
+                                        <th>Vendidos</th>
+                                        <th style="width: 150px;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventory-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                         <h2>Crear / Editar Producto</h2>
+                         <form id="product-form">
+                            <label for="product-name">Nombre</label>
+                            <input type="text" id="product-name" required>
+                            <label for="product-barcode">Código de Barras (opcional)</label>
+                            <input type="text" id="product-barcode">
+                            <label for="product-category">Categoría</label>
+                            <select id="product-category" required></select>
+                            <label for="product-cost">Precio Costo</label>
+                            <input type="number" id="product-cost" step="0.01" min="0" required>
+                            <label for="product-sale-price">Precio Venta</label>
+                            <input type="number" id="product-sale-price" step="0.01" min="0" required>
+                            <label for="product-quantity">Cantidad en Stock</label>
+                            <input type="number" id="product-quantity" min="0" required>
+                            <label for="product-min-stock">Stock Mínimo Alerta</label>
+                            <input type="number" id="product-min-stock" min="0" required value="5">
+                            <label for="product-image-url">URL Imagen (opcional)</label>
+                            <input type="url" id="product-image-url">
+                            <button type="submit" id="product-submit-btn" class="btn-primary w-100 mt-3">Crear Producto</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="cash-section" class="content-section hidden">
+                <div class="grid-2-1">
+                    <div id="cash-status-box" class="card cash-status closed"></div>
+                    <div id="cash-control-panel" class="card"></div>
+                    <div class="card span-3">
+                        <h2>Historial de Periodos de Caja</h2>
+                        <div class="table-container mt-3">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Periodo/Cajero</th>
+                                        <th>Apertura</th>
+                                        <th>Cierre</th>
+                                        <th>Saldo Inicial</th>
+                                        <th>Conteo Final</th>
+                                        <th>Diferencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cash-history-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="reports-section" class="content-section hidden">
+                <div class="grid-3-1-3">
+                    <div class="card span-3">
+                        <h2>Resumen Global de Ventas</h2>
+                        <div class="metrics-grid">
+                            <div class="metric-box success">
+                                <span>Ventas Totales</span>
+                                <strong id="reports-total-sales" class="metric-value">C$ 0.00</strong>
+                            </div>
+                            <div class="metric-box">
+                                <span>Costo de Venta</span>
+                                <strong id="reports-total-cost" class="metric-value">C$ 0.00</strong>
+                            </div>
+                            <div class="metric-box primary">
+                                <span>Ganancia Total</span>
+                                <strong id="reports-total-profit" class="metric-value">C$ 0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card span-3 mt-3">
+                        <h2>Detalle de Transacciones</h2>
+                        <form id="report-filter-form" class="filter-controls">
+                            <label for="report-cash-period" style="margin-right: 10px;">Filtrar por Periodo de Caja:</label>
+                            <select id="report-cash-period" class="filter-select" style="width: 300px;"></select>
+                            <button type="submit" class="btn-primary small-btn">Aplicar Filtro</button>
+                        </form>
+                        <div class="table-container mt-3">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Factura #</th>
+                                        <th>Fecha/Hora</th>
+                                        <th>Cajero</th>
+                                        <th>Pago</th>
+                                        <th>Total Venta</th>
+                                        <th>Ganancia</th>
+                                        <th style="width: 50px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sales-reports-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="admin-section" class="content-section hidden">
+                <div class="grid-1-2">
+                    <div>
+                        <div class="card">
+                            <h2>Gestión de Usuarios</h2>
+                            <form id="user-form">
+                                <label for="user-username">Nombre de Usuario</label>
+                                <input type="text" id="user-username" required>
+                                <label for="user-password">Contraseña (Necesaria al crear)</label>
+                                <input type="password" id="user-password" required>
+                                <label for="user-role">Rol</label>
+                                <select id="user-role" required>
+                                    <option value="admin">Administrador</option>
+                                    <option value="operator">Operador / Cajero</option>
+                                </select>
+                                <fieldset class="mt-3" id="user-permissions-fieldset">
+                                    <legend>Permisos de Módulos</legend>
+                                    <div class="permissions-grid">
+                                        <div><input type="checkbox" id="perm-pos" data-permission="pos-section"><label for="perm-pos">Punto de Venta</label></div>
+                                        <div><input type="checkbox" id="perm-inventory" data-permission="inventory-section"><label for="perm-inventory">Inventario</label></div>
+                                        <div><input type="checkbox" id="perm-cash" data-permission="cash-section"><label for="perm-cash">Control de Caja</label></div>
+                                        <div><input type="checkbox" id="perm-reports" data-permission="reports-section"><label for="perm-reports">Reportes</label></div>
+                                        <div><input type="checkbox" id="perm-admin" data-permission="admin-section"><label for="perm-admin">Administración</label></div>
+                                        <div><input type="checkbox" id="perm-invoices" data-permission="invoices-section"><label for="perm-invoices">Facturas / Créditos</label></div>
+                                    </div>
+                                </fieldset>
+                                <button type="submit" id="user-submit-btn" class="btn-success w-100 mt-3">Crear Nuevo Usuario</button>
+                                <button type="button" onclick="resetUserForm()" class="btn-secondary-outline w-100 mt-2">Limpiar Formulario</button>
+                            </form>
+                        </div>
+                        
+                        <div class="card mt-3">
+                            <h2>Datos de la Tienda</h2>
+                            <form id="business-info-form">
+                                <label for="business-name-input">Nombre de la Tienda</label>
+                                <input type="text" id="business-name-input" required>
+                                <label for="business-location-input">Ubicación / Dirección</label>
+                                <input type="text" id="business-location-input">
+                                <label for="business-phone-input">Teléfono</label>
+                                <input type="text" id="business-phone-input">
+                                <label for="business-tax-id-input">No. Alcaldía / RUC</label>
+                                <input type="text" id="business-tax-id-input">
+                                <label for="business-slogan-input">Lema / Slogan (opcional)</label>
+                                <input type="text" id="business-slogan-input">
+                                <button type="submit" class="btn-primary w-100 mt-3">Guardar Datos</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card">
+                            <h3>Lista de Usuarios</h3>
+                            <div class="table-container">
+                                <table class="data-table user-table">
+                                    <thead><tr><th>ID</th><th>Usuario</th><th>Rol</th><th style="width: 150px;">Acciones</th></tr></thead>
+                                    <tbody id="user-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card mt-3" style="border-left: 4px solid var(--success-color);">
+                            <h3>Periodos Facturados (Historial de Cortes)</h3>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del Periodo</th>
+                                            <th>Fecha Creado</th>
+                                            <th style="width: 130px;">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-billed-periods-table-body">
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <h3>Gestión de Deudores (Base de Datos Maestra)</h3>
+                            <div class="filter-controls mb-2" style="display: flex; gap: 10px;">
+                                <button onclick="exportDebtorsToExcel()" class="btn-primary-outline">
+                                    <span class="material-icons-outlined">download</span> Exportar
+                                </button>
+                                <label class="btn-secondary-outline" style="margin:0; cursor:pointer;">
+                                    <span class="material-icons-outlined">upload</span> Importar
+                                    <input type="file" id="import-debtors-file" accept=".xlsx, .xls" style="display: none;" onchange="importDebtorsFromExcel(event)">
+                                </label>
+                            </div>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Nombre Completo</th>
+                                            <th>Total Deuda Activa</th>
+                                            <th style="width: 100px;">Editar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-debtors-table-body">
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div id="admin-panel-footer" class="card reset-panel mt-3">
+                            <h2>⚠️ Mantenimiento Avanzado</h2>
+                            <p>Esta acción es irreversible y elimina *toda* la información del sistema.</p>
+                            <button id="reset-db-btn" class="btn-danger-outline">
+                                <span class="material-icons-outlined">delete_forever</span> Resetear Base de Datos Completa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="invoices-section" class="content-section hidden">
+                <div class="header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2>Gestión de Facturas (Créditos Activos)</h2>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="filter-group" style="display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; width: 100%;">
+                        <div class="input-field" style="flex-grow: 1; min-width: 250px;">
+                            <label>Buscar Deudor:</label>
+                            <input type="text" id="search-debtor-input" placeholder="Buscar por Nombre o Código..." class="form-control" oninput="filterDebtors()">
+                        </div>
+                        <div class="input-field">
+                            <label>Desde:</label>
+                            <input type="date" id="invoice-date-start" class="form-control">
+                        </div>
+                        <div class="input-field">
+                            <label>Hasta:</label>
+                            <input type="date" id="invoice-date-end" class="form-control">
+                        </div>
+                        <button id="btn-print-all-debtors" class="btn-primary">
+                            <span class="material-icons-outlined">print</span> Imprimir Periodo y Cortar a Cero
+                        </button>
+                    </div>
+                </div>
+
+                <div id="debtors-container" class="debtors-grid">
+                    </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="category-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="close-category-modal">&times;</span>
+            <h2>Gestión de Categorías</h2>
+            <form id="category-form">
+                <label for="category-name">Nueva Categoría</label>
+                <div class="input-group-with-btn">
+                     <input type="text" id="category-name" placeholder="Ej: Electrónica..." required>
+                     <button type="submit" class="btn-primary">Guardar</button>
+                </div>
+            </form>
+            <h3 class="mt-3">Categorías Existentes</h3>
+            <div id="category-list-container" class="category-list"></div>
+        </div>
+    </div>
+
+    <div id="historical-period-modal" class="modal hidden">
+        <div class="modal-content" style="max-width: 90%; width: 1200px; max-height: 95vh;">
+            <span class="close-btn" onclick="document.getElementById('historical-period-modal').classList.add('hidden')">&times;</span>
+            <h2 id="historical-modal-title" style="margin-bottom: 20px;">Periodo Facturado</h2>
+            <div id="historical-debtors-container" class="debtors-grid">
+                </div>
+        </div>
+    </div>
+    
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="app.js"></script>
+</body>
+</html>
