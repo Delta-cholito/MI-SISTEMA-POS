@@ -1,234 +1,621 @@
+/* =========================================================
+   SISTEMA POS - DISEÑO PROFESIONAL
+   PALETA: BLANCO + NAVY + TURQUESA
+   ========================================================= */
+
 
 /* =========================================================
-   1. DEFINICIÓN DE VARIABLES DE COLOR
-   PALETA: VERDE ESMERALDA + TURQUESA
+   1. VARIABLES PRINCIPALES
    ========================================================= */
 
 :root {
-  /* =========================
-     MODO CLARO
-     ========================= */
 
-  --bg-principal: #f6f8f7;
+  /* ---------- FONDOS ---------- */
+
+  --bg-principal: #f4f7f9;
+  --bg-secundario: #eef2f5;
   --bg-card: #ffffff;
 
-  --texto-principal: #17221d;
-  --texto-secundario: #66736c;
+  /* ---------- TEXTOS ---------- */
 
-  --borde: #dfe7e2;
+  --texto-principal: #172033;
+  --texto-secundario: #64748b;
+  --texto-terciario: #94a3b8;
 
-  /* Color principal */
-  --primary: #059669;
-  --primary-hover: #047857;
-  --primary-light: #d1fae5;
+  /* ---------- BORDES ---------- */
 
-  /* Estados */
-  --success: #16a34a;
+  --borde: #dce3e8;
+  --borde-hover: #b8c6d0;
+
+  /* ---------- COLOR PRINCIPAL ---------- */
+
+  --primary: #0f766e;
+  --primary-hover: #0d625c;
+  --primary-light: #ccfbf1;
+
+  /* ---------- COLOR SECUNDARIO ---------- */
+
+  --secondary: #1e3a5f;
+  --secondary-hover: #162f4e;
+
+  /* ---------- ESTADOS ---------- */
+
+  --success: #15803d;
+  --success-light: #dcfce7;
+
   --warning: #d97706;
+  --warning-light: #fef3c7;
+
   --danger: #dc2626;
-  --info: #0891b2;
+  --danger-hover: #b91c1c;
+  --danger-light: #fee2e2;
 
-  /* Switch */
-  --switch-off: #cbd5d0;
+  --info: #2563eb;
+  --info-light: #dbeafe;
 
-  /* Sombras */
-  --card-shadow:
-    0 4px 6px -1px rgba(16, 24, 20, 0.06),
-    0 2px 4px -2px rgba(16, 24, 20, 0.06);
+  /* ---------- SOMBRAS ---------- */
+
+  --shadow-sm:
+    0 1px 2px rgba(15, 23, 42, 0.05);
+
+  --shadow-md:
+    0 4px 12px rgba(15, 23, 42, 0.08);
+
+  --shadow-lg:
+    0 10px 25px rgba(15, 23, 42, 0.10);
+
+  /* ---------- RADIO ---------- */
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* ---------- TRANSICIONES ---------- */
+
+  --transition: 0.2s ease;
 }
 
 
 /* =========================================================
-   MODO OSCURO
+   2. MODO OSCURO
+   =========================================================
+   
+   Si tu sistema utiliza html.dark, esta versión mantiene
+   suficiente contraste para que el texto NO desaparezca.
    ========================================================= */
 
 html.dark {
 
-  --bg-principal: #0d1512;
-  --bg-card: #15201b;
+  --bg-principal: #111827;
+  --bg-secundario: #182233;
+  --bg-card: #1e293b;
 
-  --texto-principal: #f1f5f3;
-  --texto-secundario: #9eada5;
+  --texto-principal: #f8fafc;
+  --texto-secundario: #cbd5e1;
+  --texto-terciario: #94a3b8;
 
-  --borde: #26352e;
+  --borde: #334155;
+  --borde-hover: #475569;
 
-  /* Verde más luminoso para contraste */
-  --primary: #10b981;
-  --primary-hover: #34d399;
-  --primary-light: #064e3b;
+  --primary: #2dd4bf;
+  --primary-hover: #5eead4;
+  --primary-light: #134e4a;
 
-  /* Estados */
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --info: #22d3ee;
+  --secondary: #60a5fa;
+  --secondary-hover: #93c5fd;
 
-  /* Switch */
-  --switch-off: #37463f;
+  --success: #4ade80;
+  --success-light: #14532d;
 
-  /* Sombras */
-  --card-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.35);
+  --warning: #fbbf24;
+  --warning-light: #78350f;
+
+  --danger: #f87171;
+  --danger-hover: #fca5a5;
+  --danger-light: #7f1d1d;
+
+  --info: #60a5fa;
+  --info-light: #1e3a8a;
+
+  --shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.20);
+
+  --shadow-md:
+    0 4px 12px rgba(0, 0, 0, 0.25);
+
+  --shadow-lg:
+    0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 
 /* =========================================================
-   2. ESTILOS BASE
+   3. HTML Y BODY
    ========================================================= */
 
 html {
-  background-color: var(--bg-principal);
+  background: var(--bg-principal);
 }
 
 body {
+
   margin: 0;
+
   background-color: var(--bg-principal);
+
   color: var(--texto-principal);
 
   font-family:
     Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
     "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
     sans-serif;
 
+  font-size: 14px;
+
+  line-height: 1.5;
+
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 
 /* =========================================================
-   3. TARJETAS DE CONFIGURACIÓN
+   4. CONTENEDORES PRINCIPALES
+   ========================================================= */
+
+.container,
+.main-container,
+.content,
+.config-container {
+
+  color: var(--texto-principal);
+}
+
+
+/* =========================================================
+   5. TARJETAS
+   ========================================================= */
+
+.card,
+.card-config,
+.config-card {
+
+  background-color: var(--bg-card) !important;
+
+  color: var(--texto-principal) !important;
+
+  border: 1px solid var(--borde);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+
+/* Hover */
+
+.card:hover,
+.card-config:hover,
+.config-card:hover {
+
+  border-color: var(--borde-hover);
+
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* =========================================================
+   6. CARD CONFIGURACIÓN
    ========================================================= */
 
 .card-config {
-  background-color: var(--bg-card);
 
-  border: 1px solid var(--borde);
-  border-radius: 14px;
-
-  padding: 20px 24px;
+  padding: 24px;
 
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
-  gap: 20px;
 
-  box-shadow: var(--card-shadow);
-
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.2s ease;
-}
-
-
-/* Efecto al pasar el mouse */
-
-.card-config:hover {
-  border-color: var(--primary);
-  box-shadow:
-    0 8px 20px rgba(5, 150, 105, 0.10);
-
-  transform: translateY(-1px);
+  gap: 24px;
 }
 
 
 /* =========================================================
-   4. TÍTULO DE LA TARJETA
+   7. TÍTULOS
    ========================================================= */
 
-.card-config h3 {
-  margin: 0;
+.card-config h3,
+.card h3,
+.config-card h3 {
+
+  margin: 0 0 6px;
+
+  color: var(--texto-principal) !important;
 
   font-size: 16px;
-  font-weight: 650;
 
-  color: var(--texto-principal);
+  font-weight: 650;
 
   letter-spacing: -0.01em;
 }
 
 
 /* =========================================================
-   5. DESCRIPCIÓN
+   8. DESCRIPCIONES
    ========================================================= */
 
-.card-config p {
-  margin: 5px 0 0;
+.card-config p,
+.card p,
+.config-card p {
+
+  margin: 0;
+
+  color: var(--texto-secundario) !important;
 
   font-size: 14px;
-  line-height: 1.5;
 
-  color: var(--texto-secundario);
+  line-height: 1.55;
 }
 
 
 /* =========================================================
-   6. SWITCH
+   9. LABELS
+   ========================================================= */
+
+label {
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--texto-principal) !important;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   10. INPUTS
+   ========================================================= */
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="date"],
+select,
+textarea {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  min-height: 40px;
+
+  padding: 9px 12px;
+
+  background-color: var(--bg-card) !important;
+
+  color: var(--texto-principal) !important;
+
+  border: 1px solid var(--borde);
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+
+/* Placeholder */
+
+input::placeholder,
+textarea::placeholder {
+
+  color: var(--texto-terciario);
+
+  opacity: 1;
+}
+
+
+/* Focus */
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px var(--primary-light);
+
+  background-color: var(--bg-card) !important;
+}
+
+
+/* =========================================================
+   11. INPUT DESHABILITADO
+   ========================================================= */
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+
+  background-color: var(--bg-secundario) !important;
+
+  color: var(--texto-terciario) !important;
+
+  cursor: not-allowed;
+
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   12. RADIO BUTTONS
+   ========================================================= */
+
+input[type="radio"] {
+
+  width: 16px;
+
+  height: 16px;
+
+  margin: 0 7px 0 0;
+
+  accent-color: var(--primary);
+
+  cursor: pointer;
+
+  vertical-align: middle;
+}
+
+
+/* Texto junto al radio */
+
+input[type="radio"] + label {
+
+  display: inline;
+
+  margin: 0;
+
+  color: var(--texto-secundario) !important;
+
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   13. CHECKBOX
+   ========================================================= */
+
+input[type="checkbox"] {
+
+  width: 17px;
+
+  height: 17px;
+
+  accent-color: var(--primary);
+
+  cursor: pointer;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   14. BOTONES GENERALES
+   ========================================================= */
+
+button {
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  border: none;
+
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+
+/* =========================================================
+   15. BOTÓN PRINCIPAL
+   ========================================================= */
+
+.btn-primary,
+button.btn-primary {
+
+  background: var(--primary) !important;
+
+  color: #ffffff !important;
+
+  border: none;
+
+  border-radius: 7px;
+
+  min-height: 40px;
+
+  padding: 9px 18px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+.btn-primary:hover,
+button.btn-primary:hover {
+
+  background: var(--primary-hover) !important;
+
+  box-shadow:
+    0 4px 10px rgba(15, 118, 110, 0.20);
+
+  transform: translateY(-1px);
+}
+
+
+.btn-primary:active,
+button.btn-primary:active {
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   16. BOTÓN SECUNDARIO
+   ========================================================= */
+
+.btn-secondary,
+button.btn-secondary {
+
+  background: var(--secondary) !important;
+
+  color: #ffffff !important;
+
+  border-radius: 7px;
+
+  min-height: 40px;
+
+  padding: 9px 18px;
+
+  font-weight: 600;
+}
+
+
+.btn-secondary:hover,
+button.btn-secondary:hover {
+
+  background: var(--secondary-hover) !important;
+}
+
+
+/* =========================================================
+   17. BOTÓN PELIGRO
+   ========================================================= */
+
+.btn-danger,
+button.btn-danger {
+
+  background: var(--danger) !important;
+
+  color: #ffffff !important;
+
+  border-radius: 7px;
+
+  min-height: 40px;
+
+  padding: 9px 18px;
+
+  font-weight: 600;
+}
+
+
+.btn-danger:hover,
+button.btn-danger:hover {
+
+  background: var(--danger-hover) !important;
+}
+
+
+/* =========================================================
+   18. SWITCH
    ========================================================= */
 
 .switch {
+
   position: relative;
 
   display: inline-block;
 
-  width: 52px;
-  height: 28px;
+  width: 48px;
+
+  height: 26px;
 
   flex-shrink: 0;
 }
 
 
-/* Ocultar checkbox */
-
 .switch input {
+
   opacity: 0;
 
   width: 0;
+
   height: 0;
 
   position: absolute;
 }
 
 
-/* =========================================================
-   7. SLIDER
-   ========================================================= */
-
 .slider {
-  position: absolute;
 
-  cursor: pointer;
+  position: absolute;
 
   inset: 0;
 
-  background-color: var(--switch-off);
+  cursor: pointer;
+
+  background-color: #cbd5e1;
 
   border-radius: 999px;
 
   transition:
-    background-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 
-/* =========================================================
-   8. CÍRCULO DEL SWITCH
-   ========================================================= */
+.slider::before {
 
-.slider:before {
   content: "";
 
   position: absolute;
 
-  width: 22px;
-  height: 22px;
+  width: 20px;
+
+  height: 20px;
 
   left: 3px;
+
   top: 3px;
 
   background-color: #ffffff;
@@ -239,13 +626,9 @@ body {
     0 2px 5px rgba(0, 0, 0, 0.20);
 
   transition:
-    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.2s ease;
 }
 
-
-/* =========================================================
-   9. SWITCH ACTIVADO
-   ========================================================= */
 
 .switch input:checked + .slider {
 
@@ -256,110 +639,253 @@ body {
 }
 
 
-.switch input:checked + .slider:before {
+.switch input:checked + .slider::before {
 
-  transform: translateX(24px);
+  transform: translateX(22px);
 }
 
 
 /* =========================================================
-   10. HOVER
+   19. TARJETA DE MANTENIMIENTO
    ========================================================= */
 
-.switch:hover .slider {
+.maintenance-card,
+.advanced-maintenance,
+.danger-zone {
 
-  filter: brightness(1.08);
+  background: var(--bg-card) !important;
+
+  color: var(--texto-principal) !important;
+
+  border: 1px solid var(--borde);
+
+  border-left: 4px solid var(--danger);
+
+  border-radius: var(--radius-lg);
+
+  padding: 24px;
+
+  box-shadow: var(--shadow-md);
+}
+
+
+/* Título */
+
+.maintenance-card h3,
+.advanced-maintenance h3,
+.danger-zone h3 {
+
+  color: var(--texto-principal) !important;
+
+  font-size: 20px;
+
+  font-weight: 650;
+
+  margin-top: 0;
+}
+
+
+/* Texto */
+
+.maintenance-card p,
+.advanced-maintenance p,
+.danger-zone p {
+
+  color: var(--texto-secundario) !important;
 }
 
 
 /* =========================================================
-   11. FOCUS — ACCESIBILIDAD
+   20. ALERTA DE PELIGRO
    ========================================================= */
 
-.switch input:focus-visible + .slider {
+.alert-danger {
 
-  outline: 3px solid var(--primary-light);
+  background: var(--danger-light);
 
-  outline-offset: 3px;
+  color: var(--danger);
+
+  border: 1px solid rgba(220, 38, 38, 0.20);
+
+  border-radius: 8px;
+
+  padding: 12px 15px;
 }
 
 
 /* =========================================================
-   12. COLORES AUXILIARES
+   21. TEXTO DE ESTADOS
    ========================================================= */
 
 .text-primary {
-  color: var(--primary);
+  color: var(--primary) !important;
 }
 
 .text-success {
-  color: var(--success);
+  color: var(--success) !important;
 }
 
 .text-warning {
-  color: var(--warning);
+  color: var(--warning) !important;
 }
 
 .text-danger {
-  color: var(--danger);
+  color: var(--danger) !important;
 }
 
 .text-info {
-  color: var(--info);
+  color: var(--info) !important;
 }
 
 
 /* =========================================================
-   13. BOTÓN PRINCIPAL
+   22. SEPARADORES
    ========================================================= */
 
-.btn-primary {
-
-  background-color: var(--primary);
-  color: #ffffff;
+hr {
 
   border: none;
-  border-radius: 9px;
 
-  padding: 10px 16px;
+  border-top: 1px solid var(--borde);
 
-  font-size: 14px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background-color 0.2s ease,
-    transform 0.15s ease,
-    box-shadow 0.2s ease;
-}
-
-
-.btn-primary:hover {
-
-  background-color: var(--primary-hover);
-
-  box-shadow:
-    0 4px 10px rgba(5, 150, 105, 0.25);
-
-  transform: translateY(-1px);
-}
-
-
-.btn-primary:active {
-
-  transform: translateY(0);
+  margin: 20px 0;
 }
 
 
 /* =========================================================
-   14. SELECCIÓN DE TEXTO
+   23. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+
+  width: 8px;
+
+  height: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+
+  background: var(--bg-principal);
+}
+
+
+::-webkit-scrollbar-thumb {
+
+  background: #b8c4cc;
+
+  border-radius: 20px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #94a3b8;
+}
+
+
+/* =========================================================
+   24. SELECCIÓN DE TEXTO
    ========================================================= */
 
 ::selection {
 
-  background-color: var(--primary);
+  background: var(--primary);
+
   color: #ffffff;
+}
+
+
+/* =========================================================
+   25. ENLACES
+   ========================================================= */
+
+a {
+
+  color: var(--primary);
+
+  text-decoration: none;
+
+  transition: color var(--transition);
+}
+
+
+a:hover {
+
+  color: var(--primary-hover);
+
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   26. ICONOS
+   ========================================================= */
+
+.icon,
+i {
+
+  color: inherit;
+}
+
+
+/* =========================================================
+   27. ELEMENTOS DE FORMULARIO EN MODO OSCURO
+   ========================================================= */
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+
+  background-color: #172235 !important;
+
+  color: #f8fafc !important;
+
+  border-color: #334155;
+}
+
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+
+  color: #94a3b8;
+}
+
+
+html.dark label {
+
+  color: #f1f5f9 !important;
+}
+
+
+/* =========================================================
+   28. RADIOS EN MODO OSCURO
+   ========================================================= */
+
+html.dark input[type="radio"] + label {
+
+  color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   29. TRANSICIÓN GLOBAL
+   ========================================================= */
+
+.card,
+.card-config,
+.config-card,
+input,
+select,
+textarea,
+button {
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 /* =================================================================
