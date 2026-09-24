@@ -13,8 +13,39 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> 
     
+    <script>
+  // Detecta el tema guardado antes de que la página termine de renderizarse
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+</script>
+
+    
 </head>
 <body>
+
+    <!-- TARJETA DE CONTROL DE MODO OSCURO -->
+<div class="card-config">
+  <div class="config-info">
+    <div class="icon-container">
+      <!-- Ícono dinámico -->
+      <span id="theme-icon">☀️</span>
+    </div>
+    <div>
+      <h3>Apariencia del Sistema</h3>
+      <p id="theme-status-text">Tema claro activo</p>
+    </div>
+  </div>
+
+  <!-- Botón Deslizable (Toggle Switch) -->
+  <label class="switch">
+    <input type="checkbox" id="theme-toggle">
+    <span class="slider round"></span>
+  </label>
+</div>
 
     <section id="login-section" class="center-container">
         <div class="card login-card">
