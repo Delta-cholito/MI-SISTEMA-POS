@@ -2406,7 +2406,7 @@ const exportInventoryToExcel = () => {
 const handleDeleteDBConfirmation = () => {
     Swal.fire({
         title: '⚠️ Eliminar Base de Datos',
-        text: '¡Esta acción es irreversible y eliminará TODO!',
+        text: '¡ESTA ACCION ES IRREVERSIBLE Y ELIMINARA TODO!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#dc3545',
