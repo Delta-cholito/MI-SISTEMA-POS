@@ -1,122 +1,365 @@
+
 /* =========================================================
-   1. DEFINICIÓN DE VARIABLES DE COLOR (MODO CLARO Y OSCURO)
+   1. DEFINICIÓN DE VARIABLES DE COLOR
+   PALETA: VERDE ESMERALDA + TURQUESA
    ========================================================= */
+
 :root {
-  /* Modo Claro - Limpio y Profesional */
-  --bg-principal: #f1f5f9;
+  /* =========================
+     MODO CLARO
+     ========================= */
+
+  --bg-principal: #f6f8f7;
   --bg-card: #ffffff;
-  --texto-principal: #0f172a;
-  --texto-secundario: #475569;
-  --borde: #e2e8f0;
-  
-  /* Acentos de Color */
-  --primary: #2563eb;           /* Azul corporativo */
-  --primary-hover: #1d4ed8;
-  --switch-off: #cbd5e1;
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+
+  --texto-principal: #17221d;
+  --texto-secundario: #66736c;
+
+  --borde: #dfe7e2;
+
+  /* Color principal */
+  --primary: #059669;
+  --primary-hover: #047857;
+  --primary-light: #d1fae5;
+
+  /* Estados */
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --info: #0891b2;
+
+  /* Switch */
+  --switch-off: #cbd5d0;
+
+  /* Sombras */
+  --card-shadow:
+    0 4px 6px -1px rgba(16, 24, 20, 0.06),
+    0 2px 4px -2px rgba(16, 24, 20, 0.06);
 }
 
-/* Modo Oscuro - Slate Pro (Evita el negro puro para no cansar la vista) */
-html.dark {
-  --bg-principal: #0b0f17;      /* Fondo profundo */
-  --bg-card: #151c28;           /* Tarjeta contrastada */
-  --texto-principal: #f8fafc;
-  --texto-secundario: #94a3b8;
-  --borde: #1e293b;
-  
-  /* Acentos en Modo Oscuro */
-  --primary: #3b82f6;           /* Azul más brillante */
-  --primary-hover: #60a5fa;
-  --switch-off: #334155;
-  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
 
 /* =========================================================
-   2. ESTILOS BASE Y CONTENEDOR
+   MODO OSCURO
    ========================================================= */
+
+html.dark {
+
+  --bg-principal: #0d1512;
+  --bg-card: #15201b;
+
+  --texto-principal: #f1f5f3;
+  --texto-secundario: #9eada5;
+
+  --borde: #26352e;
+
+  /* Verde más luminoso para contraste */
+  --primary: #10b981;
+  --primary-hover: #34d399;
+  --primary-light: #064e3b;
+
+  /* Estados */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #22d3ee;
+
+  /* Switch */
+  --switch-off: #37463f;
+
+  /* Sombras */
+  --card-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   2. ESTILOS BASE
+   ========================================================= */
+
+html {
+  background-color: var(--bg-principal);
+}
+
 body {
+  margin: 0;
   background-color: var(--bg-principal);
   color: var(--texto-principal);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: system-ui, -apple-system, sans-serif;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
+
+
+/* =========================================================
+   3. TARJETAS DE CONFIGURACIÓN
+   ========================================================= */
 
 .card-config {
   background-color: var(--bg-card);
+
   border: 1px solid var(--borde);
-  border-radius: 0.875rem;
-  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+
+  padding: 20px 24px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
+
   box-shadow: var(--card-shadow);
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
 }
+
+
+/* Efecto al pasar el mouse */
+
+.card-config:hover {
+  border-color: var(--primary);
+  box-shadow:
+    0 8px 20px rgba(5, 150, 105, 0.10);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   4. TÍTULO DE LA TARJETA
+   ========================================================= */
 
 .card-config h3 {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
+
+  font-size: 16px;
+  font-weight: 650;
+
   color: var(--texto-principal);
+
+  letter-spacing: -0.01em;
 }
 
+
+/* =========================================================
+   5. DESCRIPCIÓN
+   ========================================================= */
+
 .card-config p {
-  margin: 0.25rem 0 0 0;
-  font-size: 0.875rem;
+  margin: 5px 0 0;
+
+  font-size: 14px;
+  line-height: 1.5;
+
   color: var(--texto-secundario);
 }
 
+
 /* =========================================================
-   3. BOTÓN DESLIZABLE (TOGGLE SWITCH INTEGRADO)
+   6. SWITCH
    ========================================================= */
+
 .switch {
   position: relative;
+
   display: inline-block;
+
   width: 52px;
   height: 28px;
+
   flex-shrink: 0;
 }
 
+
+/* Ocultar checkbox */
+
 .switch input {
   opacity: 0;
+
   width: 0;
   height: 0;
+
+  position: absolute;
 }
+
+
+/* =========================================================
+   7. SLIDER
+   ========================================================= */
 
 .slider {
   position: absolute;
+
   cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
+
+  inset: 0;
+
   background-color: var(--switch-off);
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 34px;
+
+  border-radius: 999px;
+
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+
+/* =========================================================
+   8. CÍRCULO DEL SWITCH
+   ========================================================= */
 
 .slider:before {
-  position: absolute;
   content: "";
-  height: 22px;
+
+  position: absolute;
+
   width: 22px;
+  height: 22px;
+
   left: 3px;
-  bottom: 3px;
+  top: 3px;
+
   background-color: #ffffff;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.20);
+
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Estado Activo (Checked) */
-input:checked + .slider {
+
+/* =========================================================
+   9. SWITCH ACTIVADO
+   ========================================================= */
+
+.switch input:checked + .slider {
+
   background-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px var(--primary-light);
 }
 
-input:checked + .slider:before {
+
+.switch input:checked + .slider:before {
+
   transform: translateX(24px);
 }
 
-/* Efecto Focus/Hover */
+
+/* =========================================================
+   10. HOVER
+   ========================================================= */
+
 .switch:hover .slider {
-  filter: brightness(1.05);
+
+  filter: brightness(1.08);
+}
+
+
+/* =========================================================
+   11. FOCUS — ACCESIBILIDAD
+   ========================================================= */
+
+.switch input:focus-visible + .slider {
+
+  outline: 3px solid var(--primary-light);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   12. COLORES AUXILIARES
+   ========================================================= */
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-info {
+  color: var(--info);
+}
+
+
+/* =========================================================
+   13. BOTÓN PRINCIPAL
+   ========================================================= */
+
+.btn-primary {
+
+  background-color: var(--primary);
+  color: #ffffff;
+
+  border: none;
+  border-radius: 9px;
+
+  padding: 10px 16px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.btn-primary:hover {
+
+  background-color: var(--primary-hover);
+
+  box-shadow:
+    0 4px 10px rgba(5, 150, 105, 0.25);
+
+  transform: translateY(-1px);
+}
+
+
+.btn-primary:active {
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   14. SELECCIÓN DE TEXTO
+   ========================================================= */
+
+::selection {
+
+  background-color: var(--primary);
+  color: #ffffff;
 }
 
 /* =================================================================
