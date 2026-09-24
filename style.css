@@ -1,134 +1,97 @@
-:root {
-  /* Fondo */
-  --bg-principal: #f3f4f6;
-  --bg-card: #ffffff;
-
-  /* Texto */
-  --texto-principal: #111827;
-  --texto-secundario: #4b5563;
-  --texto-muted: #9ca3af;
-
-  /* Bordes */
-  --borde: #e5e7eb;
-
-  /* Color principal (Verde Esmeralda) */
-  --primary: #059669;
-  --primary-hover: #047857;
-  --primary-light: #ecfdf5;
-
-  /* Estados */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-}
-
-html.dark {
-  /* Fondo principal */
-  --bg-principal: #0f172a;
-
-  /* Tarjetas */
-  --bg-card: #1e293b;
-
-  /* Texto */
-  --texto-principal: #f9fafb;
-  --texto-secundario: #9ca3af;
-  --texto-muted: #6b7280;
-
-  /* Bordes */
-  --borde: #334155;
-
-  /* Verde brillante para modo oscuro */
-  --primary: #10b981;
-  --primary-hover: #34d399;
-  --primary-light: #064e3b;
-
-  /* Estados */
-  --success: #10b981;
-  --warning: #fbbf24;
-  --danger: #f87171;
-}
-
-
-/* =========================================================
-   EL SWITCH ES EL ÚNICO ELEMENTO INTERACTIVO
-   ========================================================= */
-
-#theme-config-card .switch {
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   EL ICONO NO ES INTERACTIVO
-   ========================================================= */
-
-#theme-config-card .icon-container {
-
-    pointer-events: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =================================================================
-   BASE Y TIPOGRAFÍA
+   1. SISTEMA DE VARIABLES Y TEMAS (UNIFICADO)
    ================================================================= */
-:root {
-    --primary-color: #007BFF;   
-    --primary-dark: #0056b3;
-    --primary-light: #e0f2ff;
-    
-    --bg-main: #f4f7f9;         
-    --bg-card: #ffffff;         
-    --text-color: #333333;       
-    --text-light: #6c757d;       
-    
-    --success-color: #28a745;   
-    --danger-color: #dc3545;    
-    --warning-color: #ffc107;   
 
-    --box-shadow-normal: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --box-shadow-hover: 0 6px 15px rgba(0, 123, 255, 0.1);
+/* MODO CLARO (Por defecto) */
+:root {
+    /* Fondos */
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
     
+    /* Textos */
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+
+    /* Bordes y Divisiones */
+    --border-color: #e2e8f0;
+
+    /* Color Principal / Acento */
+    --primary: #0284c7;
+    --primary-hover: #0369a1;
+    --primary-light: #e0f2fe;
+
+    /* Tablas */
+    --table-header-bg: #f1f5f9;
+    --table-header-text: #0369a1;
+
+    /* Estados */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+
+    /* Sombras */
+    --box-shadow-normal: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --box-shadow-hover: 0 6px 15px rgba(2, 132, 199, 0.15);
+
     font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
 }
 
-body { margin: 0; padding: 0; background-color: var(--bg-main); color: var(--text-color); line-height: 1.6; }
-h1, h2, h3 { margin-top: 0; font-weight: 600; }
+/* MODO OSCURO */
+html.dark {
+    /* Fondos */
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --bg-input: #0f172a;
+
+    /* Textos */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-light: #64748b;
+
+    /* Bordes */
+    --border-color: #334155;
+
+    /* Color Principal */
+    --primary: #38bdf8;
+    --primary-hover: #0ea5e9;
+    --primary-light: #1b354d;
+
+    /* Tablas */
+    --table-header-bg: #0f172a;
+    --table-header-text: #38bdf8;
+
+    /* Estados */
+    --success: #10b981;
+    --warning: #fbbf24;
+    --danger: #f87171;
+
+    /* Sombras */
+    --box-shadow-normal: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --box-shadow-hover: 0 6px 15px rgba(56, 189, 248, 0.2);
+}
+
+
+/* =================================================================
+   2. BASE Y TIPOGRAFÍA
+   ================================================================= */
+body { 
+    margin: 0; 
+    padding: 0; 
+    background-color: var(--bg-main); 
+    color: var(--text-main); 
+    line-height: 1.6;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+    margin-top: 0; 
+    font-weight: 600; 
+    color: var(--text-main);
+}
+
 p, label, input, select, button { font-size: 0.95rem; }
 .hidden { display: none !important; }
 .mt-2 { margin-top: 10px; }
@@ -136,41 +99,132 @@ p, label, input, select, button { font-size: 0.95rem; }
 .mt-4 { margin-top: 30px; }
 .mb-2 { margin-bottom: 15px; }
 .w-100 { width: 100%; }
-.text-light { color: var(--text-light); }
-.text-light-sm { font-size: 0.8rem; color: #999; }
-.text-danger { color: var(--danger-color); }
-.text-success { color: var(--success-color); }
-.text-primary { color: var(--primary-color); }
+.text-light { color: var(--text-muted); }
+.text-light-sm { font-size: 0.8rem; color: var(--text-light); }
+.text-danger { color: var(--danger); }
+.text-success { color: var(--success); }
+.text-primary { color: var(--primary); }
 
 /* =================================================================
-   SECCIÓN DE LOGIN
+   3. SECCIÓN DE LOGIN
    ================================================================= */
-.center-container { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: var(--primary-light); }
-.login-card { width: 100%; max-width: 380px; padding: 30px; }
+.center-container { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-color: var(--bg-main); 
+}
+.login-card { 
+    width: 100%; 
+    max-width: 380px; 
+    padding: 30px; 
+}
 
 /* =================================================================
-   ESTRUCTURA GENERAL DE LA APP
+   4. ESTRUCTURA GENERAL Y SIDEBAR
    ================================================================= */
 #app-container { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
-.sidebar { background-color: var(--bg-card); box-shadow: var(--box-shadow-normal); padding: 20px 0; display: flex; flex-direction: column; justify-content: space-between; }
-.sidebar-header { padding: 0 20px 20px 20px; border-bottom: 1px solid #eee; }
-.business-name { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); display: block; }
-.user-role-text { font-size: 0.8rem; color: var(--text-light); margin: 5px 0 0 0; }
+
+.sidebar { 
+    background-color: var(--bg-card); 
+    border-right: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow-normal); 
+    padding: 20px 0; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.sidebar-header { 
+    padding: 0 20px 20px 20px; 
+    border-bottom: 1px solid var(--border-color); 
+}
+
+.business-name { 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    color: var(--primary); 
+    display: block; 
+}
+
+.user-role-text { 
+    font-size: 0.8rem; 
+    color: var(--text-muted); 
+    margin: 5px 0 0 0; 
+}
+
 .sidebar-nav { flex-grow: 1; padding: 10px 0; }
-.sidebar-nav a { display: flex; align-items: center; padding: 12px 20px; color: var(--text-color); text-decoration: none; transition: background-color 0.2s, color 0.2s; font-weight: 600; }
+
+.sidebar-nav a { 
+    display: flex; 
+    align-items: center; 
+    padding: 12px 20px; 
+    color: var(--text-muted); 
+    text-decoration: none; 
+    transition: background-color 0.2s, color 0.2s; 
+    font-weight: 600; 
+}
+
 .sidebar-nav a .material-icons-outlined { margin-right: 10px; font-size: 20px; }
-.sidebar-nav a:hover { background-color: var(--primary-light); color: var(--primary-dark); }
-.sidebar-nav a.active { background-color: var(--primary-color); color: var(--bg-card); border-right: 4px solid var(--warning-color); }
-.sidebar-footer { padding: 20px; border-top: 1px solid #eee; }
-.datetime-display { text-align: center; margin-bottom: 10px; font-size: 0.85rem; color: var(--text-light); }
+
+.sidebar-nav a:hover { 
+    background-color: var(--primary-light); 
+    color: var(--primary); 
+}
+
+.sidebar-nav a.active { 
+    background-color: var(--primary); 
+    color: #ffffff; 
+    border-right: 4px solid var(--warning); 
+}
+
+.sidebar-footer { 
+    padding: 20px; 
+    border-top: 1px solid var(--border-color); 
+}
+
+.datetime-display { 
+    text-align: center; 
+    margin-bottom: 10px; 
+    font-size: 0.85rem; 
+    color: var(--text-muted); 
+}
+
 .main-content { padding: 30px; }
 .app-header { margin-bottom: 25px; }
 .content-section { min-height: 70vh; }
 
 /* =================================================================
-   GRIDS Y TARJETAS (CARDS)
+   5. GRIDS Y TARJETAS (CARDS)
    ================================================================= */
-.card { background-color: var(--bg-card); padding: 20px; border-radius: 8px; box-shadow: var(--box-shadow-normal); margin-bottom: 20px; }
+.card { 
+    background-color: var(--bg-card); 
+    color: var(--text-main);
+    padding: 20px; 
+    border-radius: 8px; 
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow-normal); 
+    margin-bottom: 20px; 
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.card-config {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.card-config h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+.card-config p { margin: 0.25rem 0 0; color: var(--text-muted); font-size: 0.875rem; }
+
 .grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
 .grid-3-1 { display: grid; grid-template-columns: 3fr 1fr; gap: 20px; }
 .grid-3-1-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
@@ -186,29 +240,74 @@ p, label, input, select, button { font-size: 0.95rem; }
 }
 
 /* =================================================================
-   FORMULARIOS Y CONTROLES
+   6. FORMULARIOS Y CONTROLES
    ================================================================= */
-label { display: block; margin-top: 10px; margin-bottom: 5px; font-weight: 600; color: var(--text-color); }
-input[type="text"], input[type="password"], input[type="number"], input[type="url"], input[type="date"], select {
-    width: 100%; padding: 10px 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; transition: border-color 0.2s;
+label { 
+    display: block; 
+    margin-top: 10px; 
+    margin-bottom: 5px; 
+    font-weight: 600; 
+    color: var(--text-main); 
 }
-input:focus, select:focus { border-color: var(--primary-color); outline: none; }
+
+input[type="text"], input[type="password"], input[type="number"], input[type="url"], input[type="date"], select {
+    width: 100%; 
+    padding: 10px 12px; 
+    margin-bottom: 10px; 
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--border-color); 
+    border-radius: 6px; 
+    box-sizing: border-box; 
+    transition: border-color 0.2s, background-color 0.25s ease;
+}
+
+input:focus, select:focus { 
+    border-color: var(--primary); 
+    outline: none; 
+}
 
 .btn-primary, .btn-success, .btn-danger, .btn-secondary-outline, .btn-primary-outline, .btn-warning-outline {
-    padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; transition: background-color 0.2s, color 0.2s, border-color 0.2s; display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
 }
-.btn-primary { background-color: var(--primary-color); color: white; }
-.btn-primary:hover { background-color: var(--primary-dark); }
-.btn-success { background-color: var(--success-color); color: white; }
-.btn-success:hover { background-color: #1e7e34; }
-.btn-danger { background-color: var(--danger-color); color: white; }
-.btn-danger:hover { background-color: #bd2130; }
-.btn-secondary-outline { background-color: white; color: var(--text-light); border: 1px solid var(--text-light); }
-.btn-secondary-outline:hover { background-color: #f0f0f0; }
-.btn-primary-outline { background-color: white; color: var(--primary-color); border: 1px solid var(--primary-color); }
+
+.btn-primary { background-color: var(--primary); color: #ffffff; }
+.btn-primary:hover { background-color: var(--primary-hover); }
+
+.btn-success { background-color: var(--success); color: #ffffff; }
+.btn-success:hover { opacity: 0.9; }
+
+.btn-danger { background-color: var(--danger); color: #ffffff; }
+.btn-danger:hover { opacity: 0.9; }
+
+.btn-secondary-outline { 
+    background-color: transparent; 
+    color: var(--text-muted); 
+    border: 1px solid var(--border-color); 
+}
+.btn-secondary-outline:hover { background-color: var(--primary-light); }
+
+.btn-primary-outline { 
+    background-color: transparent; 
+    color: var(--primary); 
+    border: 1px solid var(--primary); 
+}
 .btn-primary-outline:hover { background-color: var(--primary-light); }
-.btn-warning-outline { background-color: white; color: var(--warning-color); border: 1px solid var(--warning-color); }
-.btn-warning-outline.active { background-color: var(--warning-color); color: var(--text-color); }
+
+.btn-warning-outline { 
+    background-color: transparent; 
+    color: var(--warning); 
+    border: 1px solid var(--warning); 
+}
+.btn-warning-outline.active { background-color: var(--warning); color: var(--text-main); }
 .small-btn { padding: 5px 10px; font-size: 0.85rem; }
 
 .filter-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -216,113 +315,161 @@ input:focus, select:focus { border-color: var(--primary-color); outline: none; }
 .filter-controls button { height: 40px; }
 
 /* =================================================================
-   TABLAS
+   7. SWITCH DE TEMA
+   ================================================================= */
+.switch { position: relative; display: inline-block; width: 50px; height: 26px; flex-shrink: 0; cursor: pointer; }
+.switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background-color: var(--border-color);
+    border-radius: 34px;
+    transition: background-color 0.2s ease;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.switch input:checked + .slider { background-color: var(--primary); }
+.switch input:checked + .slider::before { transform: translateX(24px); }
+.switch input:focus-visible + .slider { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+/* =================================================================
+   8. TABLAS
    ================================================================= */
 .table-container { overflow-x: auto; }
 .data-table { width: 100%; border-collapse: collapse; }
-.data-table th, .data-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #f0f0f0; }
-.data-table th { background-color: var(--primary-light); color: var(--primary-dark); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
-.data-table tbody tr:hover { background-color: #f9f9f9; }
-.data-table tr.low-stock { background-color: #fff3cd; }
+
+.data-table th, .data-table td { 
+    padding: 12px 15px; 
+    text-align: left; 
+    border-bottom: 1px solid var(--border-color); 
+}
+
+.data-table th { 
+    background-color: var(--table-header-bg); 
+    color: var(--table-header-text); 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    font-size: 0.85rem; 
+}
+
+.data-table td { color: var(--text-main); }
+.data-table tbody tr:hover { background-color: var(--primary-light); }
+.data-table tr.low-stock { background-color: rgba(245, 158, 11, 0.15); }
 
 /* =================================================================
-   POS Y CARRITO
+   9. POS Y CARRITO
    ================================================================= */
 .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; max-height: 60vh; overflow-y: auto; padding-right: 5px; }
-.product-card { background-color: #f7f7f7; border: 1px solid #ddd; border-radius: 6px; padding: 10px; cursor: pointer; text-align: center; }
-.product-card:hover { box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); transform: translateY(-2px); }
-.product-card.out-of-stock { opacity: 0.5; cursor: not-allowed; background-color: #ffeaea; }
-.product-card.out-of-stock:hover { box-shadow: none; transform: none; }
+
+.product-card { 
+    background-color: var(--bg-card); 
+    border: 1px solid var(--border-color); 
+    border-radius: 6px; 
+    padding: 10px; 
+    cursor: pointer; 
+    text-align: center; 
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover { box-shadow: var(--box-shadow-hover); transform: translateY(-2px); }
+.product-card.out-of-stock { opacity: 0.5; cursor: not-allowed; background-color: var(--bg-main); }
 .product-card img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; margin-bottom: 5px; }
 .product-info { display: flex; flex-direction: column; }
-.product-name { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.product-price { font-size: 1.1rem; font-weight: 700; color: var(--success-color); }
-.cart-items-container { min-height: 150px; max-height: 40vh; overflow-y: auto; border: 1px solid #f0f0f0; border-radius: 4px; padding: 10px; }
+.product-name { font-size: 0.9rem; font-weight: 600; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.product-price { font-size: 1.1rem; font-weight: 700; color: var(--success); }
+
+.cart-items-container { min-height: 150px; max-height: 40vh; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 4px; padding: 10px; }
 .cart-table { width: 100%; border-collapse: collapse; }
-.cart-table th, .cart-table td { padding: 5px; font-size: 0.9rem; border-bottom: 1px dashed #eee; }
+.cart-table th, .cart-table td { padding: 5px; font-size: 0.9rem; border-bottom: 1px dashed var(--border-color); color: var(--text-main); }
 .small-quantity-input { width: 45px; padding: 5px; text-align: center; margin-bottom: 0; display: inline-block; }
-.cart-summary { border-top: 1px solid #eee; padding-top: 15px; }
-.total-row { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-dark); }
-.total-amount { color: var(--danger-color); }
+.cart-summary { border-top: 1px solid var(--border-color); padding-top: 15px; }
+.total-row { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--text-main); }
+.total-amount { color: var(--danger); }
 
 /* =================================================================
-   SECCIÓN DE CAJA
+   10. SECCIÓN DE CAJA Y REPORTES
    ================================================================= */
-.cash-status { color: white; text-align: center; padding: 30px; }
-.cash-status.open { background-color: var(--success-color); }
-.cash-status.closed { background-color: var(--danger-color); }
-.cash-status h3 { font-size: 1.8rem; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.cash-status { color: #ffffff; text-align: center; padding: 30px; border-radius: 8px; }
+.cash-status.open { background-color: var(--success); }
+.cash-status.closed { background-color: var(--danger); }
+.cash-status h3 { font-size: 1.8rem; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #ffffff; }
 .cash-status p { margin: 5px 0; font-size: 1rem; }
 
-/* =================================================================
-   REPORTES
-   ================================================================= */
 .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-.metric-box { padding: 15px; border-radius: 8px; background-color: #f8f8f8; border-left: 5px solid #ccc; }
-.metric-box.success { border-left-color: var(--success-color); }
-.metric-box.primary { border-left-color: var(--primary-color); }
-.metric-box span { display: block; font-size: 0.9rem; color: var(--text-light); }
-.metric-value { font-size: 1.5rem; display: block; margin-top: 5px; }
+.metric-box { padding: 15px; border-radius: 8px; background-color: var(--bg-card); border: 1px solid var(--border-color); border-left: 5px solid var(--border-color); }
+.metric-box.success { border-left-color: var(--success); }
+.metric-box.primary { border-left-color: var(--primary); }
+.metric-box span { display: block; font-size: 0.9rem; color: var(--text-muted); }
+.metric-value { font-size: 1.5rem; display: block; margin-top: 5px; color: var(--text-main); }
 
 /* =================================================================
-   ADMINISTRACIÓN Y CATEGORÍAS
+   11. ADMINISTRACIÓN Y MODALES
    ================================================================= */
 .user-table th:last-child, .user-table td:last-child { text-align: right; }
-.reset-panel { border-left: 5px solid var(--danger-color); background-color: #fff8f8; }
-#user-permissions-fieldset { border: 1px solid #ddd; border-radius: 4px; padding: 10px 15px; }
-#user-permissions-fieldset:disabled { background-color: #f9f9f9; opacity: 0.7; }
-#user-permissions-fieldset legend { font-weight: 600; padding: 0 5px; font-size: 0.9rem; }
+.reset-panel { border-left: 5px solid var(--danger); background-color: rgba(239, 68, 68, 0.1); }
+
+#user-permissions-fieldset { border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 15px; background-color: var(--bg-card); }
+#user-permissions-fieldset:disabled { opacity: 0.6; }
+#user-permissions-fieldset legend { font-weight: 600; padding: 0 5px; font-size: 0.9rem; color: var(--text-main); }
 .permissions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
 .permissions-grid div { display: flex; align-items: center; }
 .permissions-grid input[type="checkbox"] { width: auto; margin: 0 8px 0 0; }
-.permissions-grid label { margin: 0; font-weight: 400; font-size: 0.9rem; }
+.permissions-grid label { margin: 0; font-weight: 400; font-size: 0.9rem; color: var(--text-main); }
 
-/* =================================================================
-   MODALES
-   ================================================================= */
-.modal { position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4); display: flex; justify-content: center; align-items: center; }
-.modal-content { background-color: #fefefe; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); position: relative; max-height: 90vh; overflow-y: auto; }
-.close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; top: 10px; right: 15px; cursor: pointer; }
+.modal { position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; }
+.modal-content { background-color: var(--bg-card); color: var(--text-main); padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); position: relative; max-height: 90vh; overflow-y: auto; }
+.close-btn { color: var(--text-muted); float: right; font-size: 28px; font-weight: bold; position: absolute; top: 10px; right: 15px; cursor: pointer; }
 .input-group-with-btn { display: flex; gap: 10px; }
 .input-group-with-btn input { flex-grow: 1; margin-bottom: 0; }
-.category-list { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 10px; border-top: 1px solid #eee; }
-.category-item { background-color: var(--primary-light); color: var(--primary-dark); padding: 5px 10px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
-.category-item button { background: none; color: var(--danger-color); border: none; padding: 0; font-size: 0.9rem; cursor: pointer; }
+
+.category-list { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 10px; border-top: 1px solid var(--border-color); }
+.category-item { background-color: var(--primary-light); color: var(--primary); padding: 5px 10px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+.category-item button { background: none; color: var(--danger); border: none; padding: 0; font-size: 0.9rem; cursor: pointer; }
 
 /* =================================================================
-   SECCIÓN DE FACTURAS Y DEUDORES
+   12. FACTURAS, DEUDORES Y DROPDOWNS
    ================================================================= */
-.filter-group { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 .debtors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; margin-top: 20px; }
-.debtor-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: var(--box-shadow-normal); border-top: 5px solid var(--primary-color); display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; overflow: visible; }
+.debtor-card { background: var(--bg-card); border-radius: 12px; padding: 1.5rem; box-shadow: var(--box-shadow-normal); border: 1px solid var(--border-color); border-top: 5px solid var(--primary); display: flex; flex-direction: column; transition: transform 0.2s ease; }
 .debtor-card:hover { transform: translateY(-3px); box-shadow: var(--box-shadow-hover); }
-.debtor-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
-.debtor-info h3 { margin: 0; font-size: 1.15rem; color: var(--text-color); }
-.debtor-code { background-color: var(--warning-color); color: #333; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-top: 5px; }
+.debtor-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+.debtor-info h3 { margin: 0; font-size: 1.15rem; color: var(--text-main); }
+.debtor-code { background-color: var(--warning); color: #000000; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-top: 5px; }
 .debtor-table { width: 100%; font-size: 0.85rem; border-collapse: collapse; margin: 10px 0; flex-grow: 1; }
-.debtor-table th { text-align: left; border-bottom: 2px solid #eee; padding: 8px 5px; color: var(--text-light); }
-.debtor-table td { padding: 8px 5px; border-bottom: 1px dashed #fafafa; }
-.debtor-total-box { margin-top: auto; padding-top: 15px; border-top: 2px dashed #eee; text-align: right; font-weight: 700; font-size: 1.2rem; color: var(--danger-color); }
+.debtor-table th { text-align: left; border-bottom: 2px solid var(--border-color); padding: 8px 5px; color: var(--text-muted); }
+.debtor-table td { padding: 8px 5px; border-bottom: 1px dashed var(--border-color); color: var(--text-main); }
+.debtor-total-box { margin-top: auto; padding-top: 15px; border-top: 2px dashed var(--border-color); text-align: right; font-weight: 700; font-size: 1.2rem; color: var(--danger); }
 
-/* =================================================================
-   MENÚ DE 3 PUNTITOS (DROPDOWN DEUDORES)
-   ================================================================= */
 .dropdown { position: relative; display: inline-block; }
-.icon-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); padding: 0 5px; }
-.icon-btn:hover { color: var(--primary-color); }
-.dropdown-content { display: none; position: absolute; right: 0; top: 25px; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 100; border-radius: 8px; overflow: hidden; border: 1px solid #eee; }
-.dropdown-content button { color: var(--text-color); padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; background: none; border: none; width: 100%; text-align: left; cursor: pointer; }
+.icon-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); padding: 0 5px; }
+.icon-btn:hover { color: var(--primary); }
+.dropdown-content { display: none; position: absolute; right: 0; top: 25px; background-color: var(--bg-card); min-width: 180px; box-shadow: var(--box-shadow-normal); z-index: 100; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); }
+.dropdown-content button { color: var(--text-main); padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; background: none; border: none; width: 100%; text-align: left; cursor: pointer; }
 .dropdown-content button:hover { background-color: var(--primary-light); }
 .dropdown:hover .dropdown-content { display: block; }
 
 /* =================================================================
-   ESTILOS DE IMPRESIÓN
+   13. ESTILOS DE IMPRESIÓN
    ================================================================= */
 @media print {
     body * { visibility: hidden; }
     #print-area, #print-area * { visibility: visible; }
     #print-area { position: absolute; left: 0; top: 0; width: 100%; padding: 20px; }
     .debtors-grid { display: block; }
-    .debtor-card { page-break-inside: avoid; margin-bottom: 20px; box-shadow: none; border: 1px solid #ccc; }
+    .debtor-card { page-break-inside: avoid; margin-bottom: 20px; box-shadow: none; border: 1px solid #ccc; background: white; color: black; }
     .debtor-card button, .dropdown { display: none !important; }
 }
