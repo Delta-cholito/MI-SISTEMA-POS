@@ -1,45 +1,28 @@
-/* =========================================================
-   SISTEMA DE TEMA - SISTEMA POS
-   PALETA BASADA EN EL DASHBOARD
-   ========================================================= */
-
-
-/* =========================================================
-   1. VARIABLES - MODO CLARO
-   ========================================================= */
-
 :root {
-
   /* Fondo */
-  --bg-principal: #f8fafc;
+  --bg-principal: #f3f4f6;
   --bg-card: #ffffff;
 
   /* Texto */
-  --texto-principal: #0f172a;
-  --texto-secundario: #64748b;
-  --texto-muted: #94a3b8;
+  --texto-principal: #111827;
+  --texto-secundario: #4b5563;
+  --texto-muted: #9ca3af;
 
   /* Bordes */
-  --borde: #e2e8f0;
+  --borde: #e5e7eb;
 
-  /* Color principal */
-  --primary: #0284c7;
-  --primary-hover: #0369a1;
-  --primary-light: #e0f2fe;
+  /* Color principal (Verde Esmeralda) */
+  --primary: #059669;
+  --primary-hover: #047857;
+  --primary-light: #ecfdf5;
 
   /* Estados */
   --success: #10b981;
-  --warning: #fbbf24;
+  --warning: #f59e0b;
   --danger: #ef4444;
 }
 
-
-/* =========================================================
-   2. VARIABLES - MODO OSCURO
-   ========================================================= */
-
 html.dark {
-
   /* Fondo principal */
   --bg-principal: #0f172a;
 
@@ -47,356 +30,22 @@ html.dark {
   --bg-card: #1e293b;
 
   /* Texto */
-  --texto-principal: #ffffff;
-  --texto-secundario: #94a3b8;
-  --texto-muted: #64748b;
+  --texto-principal: #f9fafb;
+  --texto-secundario: #9ca3af;
+  --texto-muted: #6b7280;
 
   /* Bordes */
   --borde: #334155;
 
-  /* Azul principal */
-  --primary: #0284c7;
-  --primary-hover: #0ea5e9;
-
-  /* Fondo para elementos seleccionados */
-  --primary-light: #1b354d;
+  /* Verde brillante para modo oscuro */
+  --primary: #10b981;
+  --primary-hover: #34d399;
+  --primary-light: #064e3b;
 
   /* Estados */
   --success: #10b981;
   --warning: #fbbf24;
-  --danger: #ef4444;
-}
-
-
-/* =========================================================
-   3. BODY
-   ========================================================= */
-
-body {
-
-  background-color: var(--bg-principal);
-
-  color: var(--texto-principal);
-
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
-}
-
-
-/* =========================================================
-   4. TARJETA DE CONFIGURACIÓN
-   ========================================================= */
-
-.card-config {
-
-  background-color: var(--bg-card);
-
-  color: var(--texto-principal);
-
-  border: 1px solid var(--borde);
-
-  padding: 1rem;
-
-  border-radius: 0.75rem;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease;
-}
-
-
-/* =========================================================
-   IMPORTANTE:
-   EL HOVER NO SELECCIONA NI ACTIVA LA CONFIGURACIÓN
-   ========================================================= */
-
-.card-config:hover {
-
-  background-color: var(--bg-card);
-
-  border-color: var(--borde);
-
-}
-
-
-/* =========================================================
-   5. TÍTULO DE LA CONFIGURACIÓN
-   ========================================================= */
-
-.card-config h3 {
-
-  margin: 0;
-
-  color: var(--texto-principal);
-
-  font-size: 1rem;
-
-  font-weight: 600;
-}
-
-
-/* =========================================================
-   6. DESCRIPCIÓN
-   ========================================================= */
-
-.card-config p {
-
-  margin: 0.25rem 0 0;
-
-  color: var(--texto-secundario);
-
-  font-size: 0.875rem;
-}
-
-
-/* =========================================================
-   7. SWITCH
-   ========================================================= */
-
-.switch {
-
-  position: relative;
-
-  display: inline-block;
-
-  width: 50px;
-
-  height: 26px;
-
-  flex-shrink: 0;
-}
-
-
-/* =========================================================
-   8. CHECKBOX OCULTO
-   ========================================================= */
-
-.switch input {
-
-  opacity: 0;
-
-  width: 0;
-
-  height: 0;
-
-  position: absolute;
-}
-
-
-/* =========================================================
-   9. FONDO DEL SWITCH
-   ========================================================= */
-
-.slider {
-
-  position: absolute;
-
-  inset: 0;
-
-  cursor: pointer;
-
-  background-color: #475569;
-
-  border-radius: 34px;
-
-  transition:
-    background-color 0.2s ease;
-}
-
-
-/* =========================================================
-   10. CÍRCULO DEL SWITCH
-   ========================================================= */
-
-.slider::before {
-
-  content: "";
-
-  position: absolute;
-
-  height: 20px;
-
-  width: 20px;
-
-  left: 3px;
-
-  bottom: 3px;
-
-  background-color: #ffffff;
-
-  border-radius: 50%;
-
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.25);
-
-  transition:
-    transform 0.2s ease;
-}
-
-
-/* =========================================================
-   11. SWITCH ACTIVADO
-   ========================================================= */
-
-.switch input:checked + .slider {
-
-  background-color: var(--primary);
-}
-
-
-/* =========================================================
-   12. CÍRCULO CUANDO ESTÁ ACTIVADO
-   ========================================================= */
-
-.switch input:checked + .slider::before {
-
-  transform: translateX(24px);
-}
-
-
-/* =========================================================
-   13. IMPORTANTE:
-   HOVER DEL SWITCH NO CAMBIA EL ESTADO
-   ========================================================= */
-
-.switch:hover .slider {
-
-  background-color: #475569;
-}
-
-
-/* =========================================================
-   14. SI ESTÁ ACTIVADO, EL HOVER CONSERVA EL COLOR
-   ========================================================= */
-
-.switch input:checked:hover + .slider {
-
-  background-color: var(--primary);
-}
-
-
-/* =========================================================
-   15. FOCUS DEL SWITCH
-   ========================================================= */
-
-.switch input:focus-visible + .slider {
-
-  outline: 2px solid var(--primary);
-
-  outline-offset: 3px;
-}
-
-
-/* =========================================================
-   16. TRANSICIÓN DEL MODO OSCURO
-   ========================================================= */
-
-body,
-.card-config,
-.card-config h3,
-.card-config p,
-.slider {
-
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
-}
-
-/* =========================================================
-   INFORMACIÓN DE LA CONFIGURACIÓN
-   ========================================================= */
-
-.config-info {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-    min-width: 0;
-}
-
-
-/* =========================================================
-   ICONO
-   ========================================================= */
-
-.icon-container {
-
-    width: 42px;
-
-    height: 42px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    background-color: var(--primary-light);
-
-    border-radius: 10px;
-
-    font-size: 20px;
-}
-
-
-/* =========================================================
-   TEXTO
-   ========================================================= */
-
-.config-text {
-
-    min-width: 0;
-}
-
-
-.config-text h3 {
-
-    margin: 0;
-
-    color: var(--texto-principal);
-
-    font-size: 15px;
-
-    font-weight: 600;
-}
-
-
-.config-text p {
-
-    margin: 3px 0 0;
-
-    color: var(--texto-secundario);
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   IMPORTANTE:
-   LA TARJETA NO SE ACTIVA CON HOVER
-   ========================================================= */
-
-#theme-config-card:hover {
-
-    background-color: var(--bg-card);
-
-    border-color: var(--borde);
-
-    box-shadow: none;
+  --danger: #f87171;
 }
 
 
