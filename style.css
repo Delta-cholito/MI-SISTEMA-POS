@@ -1,140 +1,99 @@
 /* =========================================================
-   SISTEMA POS - DISEÑO PROFESIONAL
-   PALETA: BLANCO + NAVY + TURQUESA
-   ========================================================= */
-
-
-/* =========================================================
-   1. VARIABLES PRINCIPALES
+   SISTEMA POS
+   PALETA BASADA EN EL DASHBOARD ACTUAL
    ========================================================= */
 
 :root {
 
-  /* ---------- FONDOS ---------- */
+  /* =======================================================
+     FONDOS
+     ======================================================= */
 
-  --bg-principal: #f4f7f9;
-  --bg-secundario: #eef2f5;
-  --bg-card: #ffffff;
+  --bg-principal: #0f172a;
+  --bg-sidebar: #1e293b;
+  --bg-card: #1e293b;
+  --bg-card-hover: #243247;
 
-  /* ---------- TEXTOS ---------- */
+  /* =======================================================
+     AZULES DEL SISTEMA
+     ======================================================= */
 
-  --texto-principal: #172033;
-  --texto-secundario: #64748b;
-  --texto-terciario: #94a3b8;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #1b354d;
 
-  /* ---------- BORDES ---------- */
+  /* =======================================================
+     TEXTOS
+     ======================================================= */
 
-  --borde: #dce3e8;
-  --borde-hover: #b8c6d0;
+  --texto-principal: #ffffff;
+  --texto-secundario: #94a3b8;
+  --texto-muted: #64748b;
 
-  /* ---------- COLOR PRINCIPAL ---------- */
+  /* =======================================================
+     BORDES
+     ======================================================= */
 
-  --primary: #0f766e;
-  --primary-hover: #0d625c;
-  --primary-light: #ccfbf1;
+  --borde: #334155;
+  --borde-suave: #2d3a4d;
 
-  /* ---------- COLOR SECUNDARIO ---------- */
+  /* =======================================================
+     ESTADOS
+     ======================================================= */
 
-  --secondary: #1e3a5f;
-  --secondary-hover: #162f4e;
+  --success: #10b981;
+  --success-light: #123d38;
 
-  /* ---------- ESTADOS ---------- */
+  --warning: #fbbf24;
+  --warning-light: #3f3720;
 
-  --success: #15803d;
-  --success-light: #dcfce7;
+  --danger: #ef4444;
+  --danger-light: #401f25;
 
-  --warning: #d97706;
-  --warning-light: #fef3c7;
+  --info: #38bdf8;
+  --info-light: #16394d;
 
-  --danger: #dc2626;
-  --danger-hover: #b91c1c;
-  --danger-light: #fee2e2;
+  --purple: #6366f1;
+  --purple-light: #242e4e;
 
-  --info: #2563eb;
-  --info-light: #dbeafe;
+  /* =======================================================
+     SOMBRAS
+     ======================================================= */
 
-  /* ---------- SOMBRAS ---------- */
+  --shadow-card:
+    0 4px 12px rgba(0, 0, 0, 0.20);
 
-  --shadow-sm:
-    0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-hover:
+    0 8px 20px rgba(0, 0, 0, 0.28);
 
-  --shadow-md:
-    0 4px 12px rgba(15, 23, 42, 0.08);
-
-  --shadow-lg:
-    0 10px 25px rgba(15, 23, 42, 0.10);
-
-  /* ---------- RADIO ---------- */
+  /* =======================================================
+     RADIOS
+     ======================================================= */
 
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
 
-  /* ---------- TRANSICIONES ---------- */
+  /* =======================================================
+     TRANSICIONES
+     ======================================================= */
 
   --transition: 0.2s ease;
 }
 
 
 /* =========================================================
-   2. MODO OSCURO
-   =========================================================
-   
-   Si tu sistema utiliza html.dark, esta versión mantiene
-   suficiente contraste para que el texto NO desaparezca.
-   ========================================================= */
-
-html.dark {
-
-  --bg-principal: #111827;
-  --bg-secundario: #182233;
-  --bg-card: #1e293b;
-
-  --texto-principal: #f8fafc;
-  --texto-secundario: #cbd5e1;
-  --texto-terciario: #94a3b8;
-
-  --borde: #334155;
-  --borde-hover: #475569;
-
-  --primary: #2dd4bf;
-  --primary-hover: #5eead4;
-  --primary-light: #134e4a;
-
-  --secondary: #60a5fa;
-  --secondary-hover: #93c5fd;
-
-  --success: #4ade80;
-  --success-light: #14532d;
-
-  --warning: #fbbf24;
-  --warning-light: #78350f;
-
-  --danger: #f87171;
-  --danger-hover: #fca5a5;
-  --danger-light: #7f1d1d;
-
-  --info: #60a5fa;
-  --info-light: #1e3a8a;
-
-  --shadow-sm:
-    0 1px 2px rgba(0, 0, 0, 0.20);
-
-  --shadow-md:
-    0 4px 12px rgba(0, 0, 0, 0.25);
-
-  --shadow-lg:
-    0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-
-/* =========================================================
-   3. HTML Y BODY
+   HTML
    ========================================================= */
 
 html {
   background: var(--bg-principal);
 }
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
 
 body {
 
@@ -163,20 +122,7 @@ body {
 
 
 /* =========================================================
-   4. CONTENEDORES PRINCIPALES
-   ========================================================= */
-
-.container,
-.main-container,
-.content,
-.config-container {
-
-  color: var(--texto-principal);
-}
-
-
-/* =========================================================
-   5. TARJETAS
+   TARJETAS
    ========================================================= */
 
 .card,
@@ -191,7 +137,7 @@ body {
 
   border-radius: var(--radius-lg);
 
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
 
   transition:
     background-color var(--transition),
@@ -200,94 +146,72 @@ body {
 }
 
 
-/* Hover */
-
 .card:hover,
 .card-config:hover,
 .config-card:hover {
 
-  border-color: var(--borde-hover);
+  background-color: var(--bg-card-hover) !important;
 
-  box-shadow: var(--shadow-lg);
+  border-color: #475569;
+
+  box-shadow: var(--shadow-hover);
 }
 
 
 /* =========================================================
-   6. CARD CONFIGURACIÓN
+   TÍTULOS
    ========================================================= */
 
-.card-config {
-
-  padding: 24px;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  gap: 24px;
-}
-
-
-/* =========================================================
-   7. TÍTULOS
-   ========================================================= */
-
-.card-config h3,
+.card h1,
+.card h2,
 .card h3,
+.card-config h1,
+.card-config h2,
+.card-config h3,
+.config-card h1,
+.config-card h2,
 .config-card h3 {
 
-  margin: 0 0 6px;
-
   color: var(--texto-principal) !important;
 
-  font-size: 16px;
-
-  font-weight: 650;
-
-  letter-spacing: -0.01em;
-}
-
-
-/* =========================================================
-   8. DESCRIPCIONES
-   ========================================================= */
-
-.card-config p,
-.card p,
-.config-card p {
-
-  margin: 0;
-
-  color: var(--texto-secundario) !important;
-
-  font-size: 14px;
-
-  line-height: 1.55;
-}
-
-
-/* =========================================================
-   9. LABELS
-   ========================================================= */
-
-label {
-
-  display: block;
-
-  margin-bottom: 7px;
-
-  color: var(--texto-principal) !important;
-
-  font-size: 14px;
+  margin-top: 0;
 
   font-weight: 600;
 }
 
 
 /* =========================================================
-   10. INPUTS
+   TEXTO SECUNDARIO
+   ========================================================= */
+
+.card p,
+.card-config p,
+.config-card p {
+
+  color: var(--texto-secundario) !important;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+label {
+
+  color: var(--texto-secundario) !important;
+
+  font-weight: 500;
+
+  font-size: 14px;
+
+  margin-bottom: 7px;
+
+  display: block;
+}
+
+
+/* =========================================================
+   INPUTS
    ========================================================= */
 
 input[type="text"],
@@ -296,8 +220,8 @@ input[type="tel"],
 input[type="email"],
 input[type="password"],
 input[type="search"],
-input[type="url"],
 input[type="date"],
+input[type="url"],
 select,
 textarea {
 
@@ -309,13 +233,13 @@ textarea {
 
   padding: 9px 12px;
 
-  background-color: var(--bg-card) !important;
+  background-color: #ffffff !important;
 
-  color: var(--texto-principal) !important;
+  color: #0f172a !important;
 
-  border: 1px solid var(--borde);
+  border: 1px solid #cbd5e1;
 
-  border-radius: 7px;
+  border-radius: 6px;
 
   font-family: inherit;
 
@@ -325,23 +249,13 @@ textarea {
 
   transition:
     border-color var(--transition),
-    box-shadow var(--transition),
-    background-color var(--transition);
+    box-shadow var(--transition);
 }
 
 
-/* Placeholder */
-
-input::placeholder,
-textarea::placeholder {
-
-  color: var(--texto-terciario);
-
-  opacity: 1;
-}
-
-
-/* Focus */
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
 
 input[type="text"]:focus,
 input[type="number"]:focus,
@@ -349,40 +263,35 @@ input[type="tel"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
-input[type="url"]:focus,
 input[type="date"]:focus,
+input[type="url"]:focus,
 select:focus,
 textarea:focus {
 
   border-color: var(--primary);
 
   box-shadow:
-    0 0 0 3px var(--primary-light);
+    0 0 0 3px rgba(2, 132, 199, 0.18);
 
-  background-color: var(--bg-card) !important;
+  outline: none;
 }
 
 
 /* =========================================================
-   11. INPUT DESHABILITADO
+   PLACEHOLDER
    ========================================================= */
 
-input:disabled,
-select:disabled,
-textarea:disabled {
+input::placeholder,
+textarea::placeholder {
 
-  background-color: var(--bg-secundario) !important;
+  color: #94a3b8;
 
-  color: var(--texto-terciario) !important;
-
-  cursor: not-allowed;
-
-  opacity: 0.8;
+  opacity: 1;
 }
 
 
 /* =========================================================
-   12. RADIO BUTTONS
+   RADIO BUTTON
    ========================================================= */
 
 input[type="radio"] {
@@ -391,34 +300,16 @@ input[type="radio"] {
 
   height: 16px;
 
-  margin: 0 7px 0 0;
-
   accent-color: var(--primary);
 
   cursor: pointer;
 
-  vertical-align: middle;
-}
-
-
-/* Texto junto al radio */
-
-input[type="radio"] + label {
-
-  display: inline;
-
-  margin: 0;
-
-  color: var(--texto-secundario) !important;
-
-  font-weight: 500;
-
-  cursor: pointer;
+  margin-right: 7px;
 }
 
 
 /* =========================================================
-   13. CHECKBOX
+   CHECKBOX
    ========================================================= */
 
 input[type="checkbox"] {
@@ -430,32 +321,11 @@ input[type="checkbox"] {
   accent-color: var(--primary);
 
   cursor: pointer;
-
-  vertical-align: middle;
 }
 
 
 /* =========================================================
-   14. BOTONES GENERALES
-   ========================================================= */
-
-button {
-
-  font-family: inherit;
-
-  cursor: pointer;
-
-  border: none;
-
-  transition:
-    background-color var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
-}
-
-
-/* =========================================================
-   15. BOTÓN PRINCIPAL
+   BOTÓN PRINCIPAL
    ========================================================= */
 
 .btn-primary,
@@ -473,11 +343,17 @@ button.btn-primary {
 
   padding: 9px 18px;
 
-  font-size: 14px;
-
   font-weight: 600;
 
-  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.18);
+
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 
@@ -487,7 +363,7 @@ button.btn-primary:hover {
   background: var(--primary-hover) !important;
 
   box-shadow:
-    0 4px 10px rgba(15, 118, 110, 0.20);
+    0 5px 12px rgba(2, 132, 199, 0.25);
 
   transform: translateY(-1px);
 }
@@ -501,15 +377,17 @@ button.btn-primary:active {
 
 
 /* =========================================================
-   16. BOTÓN SECUNDARIO
+   BOTÓN SECUNDARIO
    ========================================================= */
 
 .btn-secondary,
 button.btn-secondary {
 
-  background: var(--secondary) !important;
+  background: var(--bg-card) !important;
 
-  color: #ffffff !important;
+  color: var(--texto-principal) !important;
+
+  border: 1px solid var(--borde);
 
   border-radius: 7px;
 
@@ -524,12 +402,14 @@ button.btn-secondary {
 .btn-secondary:hover,
 button.btn-secondary:hover {
 
-  background: var(--secondary-hover) !important;
+  background: var(--bg-card-hover) !important;
+
+  border-color: #475569;
 }
 
 
 /* =========================================================
-   17. BOTÓN PELIGRO
+   BOTÓN PELIGRO
    ========================================================= */
 
 .btn-danger,
@@ -538,6 +418,8 @@ button.btn-danger {
   background: var(--danger) !important;
 
   color: #ffffff !important;
+
+  border: none;
 
   border-radius: 7px;
 
@@ -552,12 +434,12 @@ button.btn-danger {
 .btn-danger:hover,
 button.btn-danger:hover {
 
-  background: var(--danger-hover) !important;
+  background: #dc2626 !important;
 }
 
 
 /* =========================================================
-   18. SWITCH
+   SWITCH
    ========================================================= */
 
 .switch {
@@ -594,7 +476,7 @@ button.btn-danger:hover {
 
   cursor: pointer;
 
-  background-color: #cbd5e1;
+  background-color: #475569;
 
   border-radius: 999px;
 
@@ -618,24 +500,26 @@ button.btn-danger:hover {
 
   top: 3px;
 
-  background-color: #ffffff;
+  background: #ffffff;
 
   border-radius: 50%;
 
   box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.20);
+    0 2px 5px rgba(0, 0, 0, 0.25);
 
   transition:
     transform 0.2s ease;
 }
 
 
+/* SWITCH ACTIVADO */
+
 .switch input:checked + .slider {
 
   background-color: var(--primary);
 
   box-shadow:
-    0 0 0 3px var(--primary-light);
+    0 0 0 3px rgba(2, 132, 199, 0.15);
 }
 
 
@@ -646,7 +530,89 @@ button.btn-danger:hover {
 
 
 /* =========================================================
-   19. TARJETA DE MANTENIMIENTO
+   ELEMENTOS SELECCIONADOS
+   ========================================================= */
+
+.active,
+.selected,
+.nav-item.active {
+
+  background-color: var(--primary-light) !important;
+
+  color: var(--info) !important;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge-success {
+
+  background: var(--success-light);
+
+  color: var(--success);
+
+  border-radius: 6px;
+
+  padding: 4px 9px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.badge-warning {
+
+  background: var(--warning-light);
+
+  color: var(--warning);
+
+  border-radius: 6px;
+
+  padding: 4px 9px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.badge-danger {
+
+  background: var(--danger-light);
+
+  color: var(--danger);
+
+  border-radius: 6px;
+
+  padding: 4px 9px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.badge-info {
+
+  background: var(--info-light);
+
+  color: var(--info);
+
+  border-radius: 6px;
+
+  padding: 4px 9px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   MANTENIMIENTO / ZONA PELIGROSA
    ========================================================= */
 
 .maintenance-card,
@@ -665,27 +631,17 @@ button.btn-danger:hover {
 
   padding: 24px;
 
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
 }
 
-
-/* Título */
 
 .maintenance-card h3,
 .advanced-maintenance h3,
 .danger-zone h3 {
 
   color: var(--texto-principal) !important;
-
-  font-size: 20px;
-
-  font-weight: 650;
-
-  margin-top: 0;
 }
 
-
-/* Texto */
 
 .maintenance-card p,
 .advanced-maintenance p,
@@ -696,25 +652,7 @@ button.btn-danger:hover {
 
 
 /* =========================================================
-   20. ALERTA DE PELIGRO
-   ========================================================= */
-
-.alert-danger {
-
-  background: var(--danger-light);
-
-  color: var(--danger);
-
-  border: 1px solid rgba(220, 38, 38, 0.20);
-
-  border-radius: 8px;
-
-  padding: 12px 15px;
-}
-
-
-/* =========================================================
-   21. TEXTO DE ESTADOS
+   TEXTO DE COLORES
    ========================================================= */
 
 .text-primary {
@@ -739,7 +677,7 @@ button.btn-danger:hover {
 
 
 /* =========================================================
-   22. SEPARADORES
+   SEPARADORES
    ========================================================= */
 
 hr {
@@ -753,7 +691,27 @@ hr {
 
 
 /* =========================================================
-   23. SCROLLBAR
+   ENLACES
+   ========================================================= */
+
+a {
+
+  color: var(--info);
+
+  text-decoration: none;
+
+  transition: color var(--transition);
+}
+
+
+a:hover {
+
+  color: #7dd3fc;
+}
+
+
+/* =========================================================
+   SCROLLBAR
    ========================================================= */
 
 ::-webkit-scrollbar {
@@ -772,7 +730,7 @@ hr {
 
 ::-webkit-scrollbar-thumb {
 
-  background: #b8c4cc;
+  background: #475569;
 
   border-radius: 20px;
 }
@@ -780,12 +738,12 @@ hr {
 
 ::-webkit-scrollbar-thumb:hover {
 
-  background: #94a3b8;
+  background: #64748b;
 }
 
 
 /* =========================================================
-   24. SELECCIÓN DE TEXTO
+   SELECCIÓN DE TEXTO
    ========================================================= */
 
 ::selection {
@@ -796,97 +754,8 @@ hr {
 }
 
 
-/* =========================================================
-   25. ENLACES
-   ========================================================= */
-
-a {
-
-  color: var(--primary);
-
-  text-decoration: none;
-
-  transition: color var(--transition);
-}
 
 
-a:hover {
-
-  color: var(--primary-hover);
-
-  text-decoration: underline;
-}
-
-
-/* =========================================================
-   26. ICONOS
-   ========================================================= */
-
-.icon,
-i {
-
-  color: inherit;
-}
-
-
-/* =========================================================
-   27. ELEMENTOS DE FORMULARIO EN MODO OSCURO
-   ========================================================= */
-
-html.dark input,
-html.dark select,
-html.dark textarea {
-
-  background-color: #172235 !important;
-
-  color: #f8fafc !important;
-
-  border-color: #334155;
-}
-
-
-html.dark input::placeholder,
-html.dark textarea::placeholder {
-
-  color: #94a3b8;
-}
-
-
-html.dark label {
-
-  color: #f1f5f9 !important;
-}
-
-
-/* =========================================================
-   28. RADIOS EN MODO OSCURO
-   ========================================================= */
-
-html.dark input[type="radio"] + label {
-
-  color: #cbd5e1 !important;
-}
-
-
-/* =========================================================
-   29. TRANSICIÓN GLOBAL
-   ========================================================= */
-
-.card,
-.card-config,
-.config-card,
-input,
-select,
-textarea,
-button {
-
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
 
 /* =================================================================
    BASE Y TIPOGRAFÍA
