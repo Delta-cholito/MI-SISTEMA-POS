@@ -1,44 +1,80 @@
-/* 1. Definición de Variables de Color */
+/* =========================================================
+   1. DEFINICIÓN DE VARIABLES DE COLOR (MODO CLARO Y OSCURO)
+   ========================================================= */
 :root {
-  --bg-principal: #f8fafc;
+  /* Modo Claro - Limpio y Profesional */
+  --bg-principal: #f1f5f9;
   --bg-card: #ffffff;
   --texto-principal: #0f172a;
-  --texto-secundario: #64748b;
+  --texto-secundario: #475569;
   --borde: #e2e8f0;
+  
+  /* Acentos de Color */
+  --primary: #2563eb;           /* Azul corporativo */
+  --primary-hover: #1d4ed8;
+  --switch-off: #cbd5e1;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Modo Oscuro sobreescribe las variables */
+/* Modo Oscuro - Slate Pro (Evita el negro puro para no cansar la vista) */
 html.dark {
-  --bg-principal: #0f172a;
-  --bg-card: #1e293b;
+  --bg-principal: #0b0f17;      /* Fondo profundo */
+  --bg-card: #151c28;           /* Tarjeta contrastada */
   --texto-principal: #f8fafc;
   --texto-secundario: #94a3b8;
-  --borde: #334155;
+  --borde: #1e293b;
+  
+  /* Acentos en Modo Oscuro */
+  --primary: #3b82f6;           /* Azul más brillante */
+  --primary-hover: #60a5fa;
+  --switch-off: #334155;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* 2. Estilos globales que usan las variables */
+/* =========================================================
+   2. ESTILOS BASE Y CONTENEDOR
+   ========================================================= */
 body {
   background-color: var(--bg-principal);
   color: var(--texto-principal);
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .card-config {
   background-color: var(--bg-card);
   border: 1px solid var(--borde);
-  padding: 1rem;
-  border-radius: 0.75rem;
+  border-radius: 0.875rem;
+  padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 3. Estilos del Botón Deslizable (Toggle) */
+.card-config h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texto-principal);
+}
+
+.card-config p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: var(--texto-secundario);
+}
+
+/* =========================================================
+   3. BOTÓN DESLIZABLE (TOGGLE SWITCH INTEGRADO)
+   ========================================================= */
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 26px;
+  width: 52px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 .switch input {
@@ -51,29 +87,36 @@ body {
   position: absolute;
   cursor: pointer;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #cbd5e1;
-  transition: .3s;
+  background-color: var(--switch-off);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 34px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
-  transition: .3s;
+  background-color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+/* Estado Activo (Checked) */
 input:checked + .slider {
-  background-color: #3b82f6; /* Color azul activo */
+  background-color: var(--primary);
 }
 
 input:checked + .slider:before {
   transform: translateX(24px);
+}
+
+/* Efecto Focus/Hover */
+.switch:hover .slider {
+  filter: brightness(1.05);
 }
 
 /* =================================================================
