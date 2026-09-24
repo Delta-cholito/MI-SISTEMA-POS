@@ -1,119 +1,82 @@
 /* =========================================================
-   SISTEMA POS
-   PALETA BASADA EN EL DASHBOARD ACTUAL
+   SISTEMA DE TEMA - SISTEMA POS
+   PALETA BASADA EN EL DASHBOARD
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIABLES - MODO CLARO
    ========================================================= */
 
 :root {
 
-  /* =======================================================
-     FONDOS
-     ======================================================= */
+  /* Fondo */
+  --bg-principal: #f8fafc;
+  --bg-card: #ffffff;
 
-  --bg-principal: #0f172a;
-  --bg-sidebar: #1e293b;
-  --bg-card: #1e293b;
-  --bg-card-hover: #243247;
+  /* Texto */
+  --texto-principal: #0f172a;
+  --texto-secundario: #64748b;
+  --texto-muted: #94a3b8;
 
-  /* =======================================================
-     AZULES DEL SISTEMA
-     ======================================================= */
+  /* Bordes */
+  --borde: #e2e8f0;
 
+  /* Color principal */
   --primary: #0284c7;
   --primary-hover: #0369a1;
-  --primary-light: #1b354d;
+  --primary-light: #e0f2fe;
 
-  /* =======================================================
-     TEXTOS
-     ======================================================= */
+  /* Estados */
+  --success: #10b981;
+  --warning: #fbbf24;
+  --danger: #ef4444;
+}
 
+
+/* =========================================================
+   2. VARIABLES - MODO OSCURO
+   ========================================================= */
+
+html.dark {
+
+  /* Fondo principal */
+  --bg-principal: #0f172a;
+
+  /* Tarjetas */
+  --bg-card: #1e293b;
+
+  /* Texto */
   --texto-principal: #ffffff;
   --texto-secundario: #94a3b8;
   --texto-muted: #64748b;
 
-  /* =======================================================
-     BORDES
-     ======================================================= */
-
+  /* Bordes */
   --borde: #334155;
-  --borde-suave: #2d3a4d;
 
-  /* =======================================================
-     ESTADOS
-     ======================================================= */
+  /* Azul principal */
+  --primary: #0284c7;
+  --primary-hover: #0ea5e9;
 
+  /* Fondo para elementos seleccionados */
+  --primary-light: #1b354d;
+
+  /* Estados */
   --success: #10b981;
-  --success-light: #123d38;
-
   --warning: #fbbf24;
-  --warning-light: #3f3720;
-
   --danger: #ef4444;
-  --danger-light: #401f25;
-
-  --info: #38bdf8;
-  --info-light: #16394d;
-
-  --purple: #6366f1;
-  --purple-light: #242e4e;
-
-  /* =======================================================
-     SOMBRAS
-     ======================================================= */
-
-  --shadow-card:
-    0 4px 12px rgba(0, 0, 0, 0.20);
-
-  --shadow-hover:
-    0 8px 20px rgba(0, 0, 0, 0.28);
-
-  /* =======================================================
-     RADIOS
-     ======================================================= */
-
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-
-  /* =======================================================
-     TRANSICIONES
-     ======================================================= */
-
-  --transition: 0.2s ease;
 }
 
 
 /* =========================================================
-   HTML
-   ========================================================= */
-
-html {
-  background: var(--bg-principal);
-}
-
-
-/* =========================================================
-   BODY
+   3. BODY
    ========================================================= */
 
 body {
 
-  margin: 0;
-
   background-color: var(--bg-principal);
 
   color: var(--texto-principal);
-
-  font-family:
-    Inter,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
-
-  font-size: 14px;
-
-  line-height: 1.5;
 
   transition:
     background-color 0.25s ease,
@@ -122,324 +85,80 @@ body {
 
 
 /* =========================================================
-   TARJETAS
+   4. TARJETA DE CONFIGURACIÓN
    ========================================================= */
 
-.card,
-.card-config,
-.config-card {
+.card-config {
 
-  background-color: var(--bg-card) !important;
+  background-color: var(--bg-card);
 
-  color: var(--texto-principal) !important;
+  color: var(--texto-principal);
 
   border: 1px solid var(--borde);
 
-  border-radius: var(--radius-lg);
+  padding: 1rem;
 
-  box-shadow: var(--shadow-card);
+  border-radius: 0.75rem;
 
-  transition:
-    background-color var(--transition),
-    border-color var(--transition),
-    box-shadow var(--transition);
-}
+  display: flex;
 
+  justify-content: space-between;
 
-.card:hover,
-.card-config:hover,
-.config-card:hover {
-
-  background-color: var(--bg-card-hover) !important;
-
-  border-color: #475569;
-
-  box-shadow: var(--shadow-hover);
-}
-
-
-/* =========================================================
-   TÍTULOS
-   ========================================================= */
-
-.card h1,
-.card h2,
-.card h3,
-.card-config h1,
-.card-config h2,
-.card-config h3,
-.config-card h1,
-.config-card h2,
-.config-card h3 {
-
-  color: var(--texto-principal) !important;
-
-  margin-top: 0;
-
-  font-weight: 600;
-}
-
-
-/* =========================================================
-   TEXTO SECUNDARIO
-   ========================================================= */
-
-.card p,
-.card-config p,
-.config-card p {
-
-  color: var(--texto-secundario) !important;
-}
-
-
-/* =========================================================
-   LABELS
-   ========================================================= */
-
-label {
-
-  color: var(--texto-secundario) !important;
-
-  font-weight: 500;
-
-  font-size: 14px;
-
-  margin-bottom: 7px;
-
-  display: block;
-}
-
-
-/* =========================================================
-   INPUTS
-   ========================================================= */
-
-input[type="text"],
-input[type="number"],
-input[type="tel"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-input[type="date"],
-input[type="url"],
-select,
-textarea {
-
-  width: 100%;
-
-  box-sizing: border-box;
-
-  min-height: 40px;
-
-  padding: 9px 12px;
-
-  background-color: #ffffff !important;
-
-  color: #0f172a !important;
-
-  border: 1px solid #cbd5e1;
-
-  border-radius: 6px;
-
-  font-family: inherit;
-
-  font-size: 14px;
-
-  outline: none;
+  align-items: center;
 
   transition:
-    border-color var(--transition),
-    box-shadow var(--transition);
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 
 /* =========================================================
-   INPUT FOCUS
+   IMPORTANTE:
+   EL HOVER NO SELECCIONA NI ACTIVA LA CONFIGURACIÓN
    ========================================================= */
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="date"]:focus,
-input[type="url"]:focus,
-select:focus,
-textarea:focus {
+.card-config:hover {
 
-  border-color: var(--primary);
+  background-color: var(--bg-card);
 
-  box-shadow:
-    0 0 0 3px rgba(2, 132, 199, 0.18);
+  border-color: var(--borde);
 
-  outline: none;
 }
 
 
 /* =========================================================
-   PLACEHOLDER
+   5. TÍTULO DE LA CONFIGURACIÓN
    ========================================================= */
 
-input::placeholder,
-textarea::placeholder {
+.card-config h3 {
 
-  color: #94a3b8;
+  margin: 0;
 
-  opacity: 1;
-}
+  color: var(--texto-principal);
 
-
-/* =========================================================
-   RADIO BUTTON
-   ========================================================= */
-
-input[type="radio"] {
-
-  width: 16px;
-
-  height: 16px;
-
-  accent-color: var(--primary);
-
-  cursor: pointer;
-
-  margin-right: 7px;
-}
-
-
-/* =========================================================
-   CHECKBOX
-   ========================================================= */
-
-input[type="checkbox"] {
-
-  width: 17px;
-
-  height: 17px;
-
-  accent-color: var(--primary);
-
-  cursor: pointer;
-}
-
-
-/* =========================================================
-   BOTÓN PRINCIPAL
-   ========================================================= */
-
-.btn-primary,
-button.btn-primary {
-
-  background: var(--primary) !important;
-
-  color: #ffffff !important;
-
-  border: none;
-
-  border-radius: 7px;
-
-  min-height: 40px;
-
-  padding: 9px 18px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.18);
-
-  transition:
-    background-color var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
-}
-
-
-.btn-primary:hover,
-button.btn-primary:hover {
-
-  background: var(--primary-hover) !important;
-
-  box-shadow:
-    0 5px 12px rgba(2, 132, 199, 0.25);
-
-  transform: translateY(-1px);
-}
-
-
-.btn-primary:active,
-button.btn-primary:active {
-
-  transform: translateY(0);
-}
-
-
-/* =========================================================
-   BOTÓN SECUNDARIO
-   ========================================================= */
-
-.btn-secondary,
-button.btn-secondary {
-
-  background: var(--bg-card) !important;
-
-  color: var(--texto-principal) !important;
-
-  border: 1px solid var(--borde);
-
-  border-radius: 7px;
-
-  min-height: 40px;
-
-  padding: 9px 18px;
+  font-size: 1rem;
 
   font-weight: 600;
 }
 
 
-.btn-secondary:hover,
-button.btn-secondary:hover {
-
-  background: var(--bg-card-hover) !important;
-
-  border-color: #475569;
-}
-
-
 /* =========================================================
-   BOTÓN PELIGRO
+   6. DESCRIPCIÓN
    ========================================================= */
 
-.btn-danger,
-button.btn-danger {
+.card-config p {
 
-  background: var(--danger) !important;
+  margin: 0.25rem 0 0;
 
-  color: #ffffff !important;
+  color: var(--texto-secundario);
 
-  border: none;
-
-  border-radius: 7px;
-
-  min-height: 40px;
-
-  padding: 9px 18px;
-
-  font-weight: 600;
-}
-
-
-.btn-danger:hover,
-button.btn-danger:hover {
-
-  background: #dc2626 !important;
+  font-size: 0.875rem;
 }
 
 
 /* =========================================================
-   SWITCH
+   7. SWITCH
    ========================================================= */
 
 .switch {
@@ -448,13 +167,17 @@ button.btn-danger:hover {
 
   display: inline-block;
 
-  width: 48px;
+  width: 50px;
 
   height: 26px;
 
   flex-shrink: 0;
 }
 
+
+/* =========================================================
+   8. CHECKBOX OCULTO
+   ========================================================= */
 
 .switch input {
 
@@ -468,6 +191,10 @@ button.btn-danger:hover {
 }
 
 
+/* =========================================================
+   9. FONDO DEL SWITCH
+   ========================================================= */
+
 .slider {
 
   position: absolute;
@@ -478,13 +205,16 @@ button.btn-danger:hover {
 
   background-color: #475569;
 
-  border-radius: 999px;
+  border-radius: 34px;
 
   transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color 0.2s ease;
 }
 
+
+/* =========================================================
+   10. CÍRCULO DEL SWITCH
+   ========================================================= */
 
 .slider::before {
 
@@ -492,266 +222,233 @@ button.btn-danger:hover {
 
   position: absolute;
 
-  width: 20px;
-
   height: 20px;
+
+  width: 20px;
 
   left: 3px;
 
-  top: 3px;
+  bottom: 3px;
 
-  background: #ffffff;
+  background-color: #ffffff;
 
   border-radius: 50%;
 
   box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.25);
+    0 1px 3px rgba(0, 0, 0, 0.25);
 
   transition:
     transform 0.2s ease;
 }
 
 
-/* SWITCH ACTIVADO */
+/* =========================================================
+   11. SWITCH ACTIVADO
+   ========================================================= */
 
 .switch input:checked + .slider {
 
   background-color: var(--primary);
-
-  box-shadow:
-    0 0 0 3px rgba(2, 132, 199, 0.15);
 }
 
+
+/* =========================================================
+   12. CÍRCULO CUANDO ESTÁ ACTIVADO
+   ========================================================= */
 
 .switch input:checked + .slider::before {
 
-  transform: translateX(22px);
+  transform: translateX(24px);
 }
 
 
 /* =========================================================
-   ELEMENTOS SELECCIONADOS
+   13. IMPORTANTE:
+   HOVER DEL SWITCH NO CAMBIA EL ESTADO
    ========================================================= */
 
-.active,
-.selected,
-.nav-item.active {
+.switch:hover .slider {
 
-  background-color: var(--primary-light) !important;
-
-  color: var(--info) !important;
+  background-color: #475569;
 }
 
 
 /* =========================================================
-   BADGES
+   14. SI ESTÁ ACTIVADO, EL HOVER CONSERVA EL COLOR
    ========================================================= */
 
-.badge-success {
+.switch input:checked:hover + .slider {
 
-  background: var(--success-light);
-
-  color: var(--success);
-
-  border-radius: 6px;
-
-  padding: 4px 9px;
-
-  font-size: 12px;
-
-  font-weight: 600;
-}
-
-
-.badge-warning {
-
-  background: var(--warning-light);
-
-  color: var(--warning);
-
-  border-radius: 6px;
-
-  padding: 4px 9px;
-
-  font-size: 12px;
-
-  font-weight: 600;
-}
-
-
-.badge-danger {
-
-  background: var(--danger-light);
-
-  color: var(--danger);
-
-  border-radius: 6px;
-
-  padding: 4px 9px;
-
-  font-size: 12px;
-
-  font-weight: 600;
-}
-
-
-.badge-info {
-
-  background: var(--info-light);
-
-  color: var(--info);
-
-  border-radius: 6px;
-
-  padding: 4px 9px;
-
-  font-size: 12px;
-
-  font-weight: 600;
+  background-color: var(--primary);
 }
 
 
 /* =========================================================
-   MANTENIMIENTO / ZONA PELIGROSA
+   15. FOCUS DEL SWITCH
    ========================================================= */
 
-.maintenance-card,
-.advanced-maintenance,
-.danger-zone {
+.switch input:focus-visible + .slider {
 
-  background: var(--bg-card) !important;
+  outline: 2px solid var(--primary);
 
-  color: var(--texto-principal) !important;
-
-  border: 1px solid var(--borde);
-
-  border-left: 4px solid var(--danger);
-
-  border-radius: var(--radius-lg);
-
-  padding: 24px;
-
-  box-shadow: var(--shadow-card);
-}
-
-
-.maintenance-card h3,
-.advanced-maintenance h3,
-.danger-zone h3 {
-
-  color: var(--texto-principal) !important;
-}
-
-
-.maintenance-card p,
-.advanced-maintenance p,
-.danger-zone p {
-
-  color: var(--texto-secundario) !important;
+  outline-offset: 3px;
 }
 
 
 /* =========================================================
-   TEXTO DE COLORES
+   16. TRANSICIÓN DEL MODO OSCURO
    ========================================================= */
 
-.text-primary {
-  color: var(--primary) !important;
+body,
+.card-config,
+.card-config h3,
+.card-config p,
+.slider {
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.text-success {
-  color: var(--success) !important;
-}
+/* =========================================================
+   INFORMACIÓN DE LA CONFIGURACIÓN
+   ========================================================= */
 
-.text-warning {
-  color: var(--warning) !important;
-}
+.config-info {
 
-.text-danger {
-  color: var(--danger) !important;
-}
+    display: flex;
 
-.text-info {
-  color: var(--info) !important;
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
 }
 
 
 /* =========================================================
-   SEPARADORES
+   ICONO
    ========================================================= */
 
-hr {
+.icon-container {
 
-  border: none;
+    width: 42px;
 
-  border-top: 1px solid var(--borde);
+    height: 42px;
 
-  margin: 20px 0;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background-color: var(--primary-light);
+
+    border-radius: 10px;
+
+    font-size: 20px;
 }
 
 
 /* =========================================================
-   ENLACES
+   TEXTO
    ========================================================= */
 
-a {
+.config-text {
 
-  color: var(--info);
-
-  text-decoration: none;
-
-  transition: color var(--transition);
+    min-width: 0;
 }
 
 
-a:hover {
+.config-text h3 {
 
-  color: #7dd3fc;
+    margin: 0;
+
+    color: var(--texto-principal);
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.config-text p {
+
+    margin: 3px 0 0;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
 }
 
 
 /* =========================================================
-   SCROLLBAR
+   IMPORTANTE:
+   LA TARJETA NO SE ACTIVA CON HOVER
    ========================================================= */
 
-::-webkit-scrollbar {
+#theme-config-card:hover {
 
-  width: 8px;
+    background-color: var(--bg-card);
 
-  height: 8px;
-}
+    border-color: var(--borde);
 
-
-::-webkit-scrollbar-track {
-
-  background: var(--bg-principal);
-}
-
-
-::-webkit-scrollbar-thumb {
-
-  background: #475569;
-
-  border-radius: 20px;
-}
-
-
-::-webkit-scrollbar-thumb:hover {
-
-  background: #64748b;
+    box-shadow: none;
 }
 
 
 /* =========================================================
-   SELECCIÓN DE TEXTO
+   EL SWITCH ES EL ÚNICO ELEMENTO INTERACTIVO
    ========================================================= */
 
-::selection {
+#theme-config-card .switch {
 
-  background: var(--primary);
-
-  color: #ffffff;
+    cursor: pointer;
 }
+
+
+/* =========================================================
+   EL ICONO NO ES INTERACTIVO
+   ========================================================= */
+
+#theme-config-card .icon-container {
+
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

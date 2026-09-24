@@ -370,25 +370,111 @@
                     </div>
                 </div>
 
-                <!-- TARJETA DE CONTROL DE MODO OSCURO -->
-   <div class="card-config">
-      <div class="config-info">
-         <div class="icon-container">
-            <!-- Ícono dinámico -->
-            <span id="theme-icon">☀️</span>
-           </div>
-            <div>
-         <h3>Apariencia del Sistema</h3>
-         <p id="theme-status-text">Tema claro activo</p>
-         </div>
-         </div>
+                
 
-         <!-- Botón Deslizable (Toggle Switch) -->
-         <label class="switch">
-          <input type="checkbox" id="theme-toggle">
-          <span class="slider round"></span>
-          </label>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     TARJETA DE CONTROL DE APARIENCIA
+     ===================================================== -->
+
+<div class="card-config" id="theme-config-card">
+
+    <!-- Información de la configuración -->
+    <div class="config-info">
+
+        <!-- Icono -->
+        <div class="icon-container" aria-hidden="true">
+            <span id="theme-icon">☀️</span>
+        </div>
+
+        <!-- Texto -->
+        <div class="config-text">
+
+            <h3>Apariencia del Sistema</h3>
+
+            <p id="theme-status-text">
+                Tema claro activo
+            </p>
+
+        </div>
+
     </div>
+
+
+    <!-- =================================================
+         SWITCH DE TEMA
+         ================================================= -->
+
+    <label
+        class="switch"
+        for="theme-toggle"
+        aria-label="Cambiar apariencia del sistema"
+    >
+
+        <input
+            type="checkbox"
+            id="theme-toggle"
+            aria-label="Activar modo oscuro"
+        >
+
+        <span class="slider"></span>
+
+    </label>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2481,45 +2481,224 @@ const initEventListeners = () => {
     updateDateTimeDisplay(); 
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeStatusText = document.getElementById('theme-status-text');
-  const themeIcon = document.getElementById('theme-icon');
 
-  // Funciona para actualizar la interfaz visual de la tarjeta
-  function updateUI(isDark) {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      if (themeToggle) themeToggle.checked = true;
-      if (themeStatusText) themeStatusText.textContent = 'Tema oscuro activo';
-      if (themeIcon) themeIcon.textContent = '🌙';
-    } else {
-      document.documentElement.classList.remove('dark');
-      if (themeToggle) themeToggle.checked = false;
-      if (themeStatusText) themeStatusText.textContent = 'Tema claro activo';
-      if (themeIcon) themeIcon.textContent = '☀️';
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SISTEMA DE TEMA - SISTEMA POS
+   MODO CLARO / MODO OSCURO
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =====================================================
+       ELEMENTOS
+       ===================================================== */
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeStatusText = document.getElementById("theme-status-text");
+    const themeIcon = document.getElementById("theme-icon");
+
+    const html = document.documentElement;
+
+
+    /* =====================================================
+       CONFIGURACIÓN
+       ===================================================== */
+
+    const STORAGE_KEY = "theme";
+
+
+    /* =====================================================
+       ACTUALIZAR INTERFAZ
+       ===================================================== */
+
+    function applyTheme(theme) {
+
+        const isDark = theme === "dark";
+
+
+        /* ---------------------------------------------
+           APLICAR TEMA AL HTML
+           --------------------------------------------- */
+
+        if (isDark) {
+
+            html.classList.add("dark");
+
+        } else {
+
+            html.classList.remove("dark");
+
+        }
+
+
+        /* ---------------------------------------------
+           ACTUALIZAR SWITCH
+           --------------------------------------------- */
+
+        if (themeToggle) {
+
+            themeToggle.checked = isDark;
+
+        }
+
+
+        /* ---------------------------------------------
+           ACTUALIZAR TEXTO
+           --------------------------------------------- */
+
+        if (themeStatusText) {
+
+            themeStatusText.textContent =
+                isDark
+                    ? "Tema oscuro activo"
+                    : "Tema claro activo";
+
+        }
+
+
+        /* ---------------------------------------------
+           ACTUALIZAR ICONO
+           --------------------------------------------- */
+
+        if (themeIcon) {
+
+            themeIcon.textContent =
+                isDark
+                    ? "🌙"
+                    : "☀️";
+
+        }
+
+
+        /* ---------------------------------------------
+           GUARDAR PREFERENCIA
+           --------------------------------------------- */
+
+        localStorage.setItem(STORAGE_KEY, theme);
+
     }
-  }
 
-  // 1. Verificar estado inicial guardado
-  const currentTheme = localStorage.getItem('theme');
-  const isDarkMode = currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  updateUI(isDarkMode);
 
-  // 2. Escuchar el cambio en el Switch deslizable
-  if (themeToggle) {
-    themeToggle.addEventListener('change', (e) => {
-      const isChecked = e.target.checked;
-      if (isChecked) {
-        localStorage.setItem('theme', 'dark');
-        updateUI(true);
-      } else {
-        localStorage.setItem('theme', 'light');
-        updateUI(false);
-      }
-    });
-  }
+    /* =====================================================
+       OBTENER TEMA GUARDADO
+       ===================================================== */
+
+    function getSavedTheme() {
+
+        const savedTheme =
+            localStorage.getItem(STORAGE_KEY);
+
+
+        /* ---------------------------------------------
+           Si existe una configuración guardada,
+           utilizarla.
+           --------------------------------------------- */
+
+        if (
+            savedTheme === "dark" ||
+            savedTheme === "light"
+        ) {
+
+            return savedTheme;
+
+        }
+
+
+        /* ---------------------------------------------
+           Si no existe configuración previa,
+           iniciar en modo claro.
+           
+           IMPORTANTE:
+           NO se utilizará automáticamente el tema
+           del sistema operativo.
+           --------------------------------------------- */
+
+        return "light";
+
+    }
+
+
+    /* =====================================================
+       INICIAR SISTEMA
+       ===================================================== */
+
+    const initialTheme = getSavedTheme();
+
+    applyTheme(initialTheme);
+
+
+    /* =====================================================
+       CAMBIO DEL SWITCH
+       ===================================================== */
+
+    if (themeToggle) {
+
+        themeToggle.addEventListener("change", function (event) {
+
+            /* -----------------------------------------
+               SOLO CAMBIA CUANDO EL USUARIO MODIFICA
+               EL SWITCH.
+               ----------------------------------------- */
+
+            if (event.target.checked) {
+
+                applyTheme("dark");
+
+            } else {
+
+                applyTheme("light");
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       PROTECCIÓN CONTRA CAMBIOS INVOLUNTARIOS
+       ===================================================== */
+
+    if (themeToggle) {
+
+        themeToggle.addEventListener("click", function (event) {
+
+            /*
+             * El click únicamente permite que el checkbox
+             * cambie de estado.
+             *
+             * No se ejecuta ningún cambio de tema aquí.
+             *
+             * El cambio real se realiza exclusivamente
+             * mediante el evento "change".
+             */
+
+        });
+
+    }
+
+
 });
+
+
+
+
+
+
+
+
+
+
 
 const initApp = async () => {
     try {
